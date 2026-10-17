@@ -4,6 +4,6 @@ dist/
 .env.local
 *.log
 backend/fixora-marketing-server
-backend/torquedesk-marketing-server
+backend/fixora-marketing-server.exe
 backend/.data/
 .DS_Store
