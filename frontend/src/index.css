@@ -1,0 +1,18 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { color-scheme: light; }
+html, body { height: 100%; }
+body { font-family: 'Inter', system-ui, sans-serif; }
+
+/* Smooth anchor scrolling */
+html { scroll-behavior: smooth; }
+
+/* Subtle page-wide gradient backdrop */
+.hero-bg {
+  background:
+    radial-gradient(ellipse at 20% -10%, rgba(60,109,255,0.15), transparent 50%),
+    radial-gradient(ellipse at 80% 0%, rgba(139,92,246,0.12), transparent 50%),
+    #fff;
+}

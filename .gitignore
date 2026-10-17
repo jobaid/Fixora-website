@@ -1,0 +1,9 @@
+node_modules/
+dist/
+.env
+.env.local
+*.log
+backend/fixora-marketing-server
+backend/torquedesk-marketing-server
+backend/.data/
+.DS_Store
