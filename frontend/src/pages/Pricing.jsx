@@ -135,7 +135,7 @@ export default function Pricing() {
           </h1>
           <p className="mt-5 text-lg text-slate-600 leading-relaxed">
             Full feature access during your <strong className="text-slate-900">7-day free trial</strong>.
-            No charge until it ends. Cancel any time, right from Settings.
+            Your card will be charged after the trial ends. Cancel any time, right from Settings.
           </p>
 
           {/* Monthly / Annual toggle */}
@@ -275,7 +275,7 @@ export default function Pricing() {
                 {[
                   { icon: ShieldCheck, title: 'Bank-grade security', body: 'AES-GCM at rest. TLS everywhere.' },
                   { icon: Zap,         title: 'Setup in minutes',   body: 'No installs. No training needed.' },
-                  { icon: CreditCard,  title: 'No card for trial',  body: 'Zero friction to get started.' },
+                  { icon: CreditCard,  title: 'Charged after trial', body: 'Card charges when the 7 days end — cancel any time before.' },
                   { icon: HelpCircle,  title: 'Cancel any time',    body: 'From Settings → Billing.' },
                 ].map((item) => (
                   <div key={item.title} className="flex flex-col items-start gap-2 p-4 rounded-xl bg-white/60 backdrop-blur border border-slate-200/70 hover:border-slate-300 hover:shadow-sm transition">
@@ -297,7 +297,7 @@ export default function Pricing() {
               </div>
               <div className="space-y-3">
                 {[
-                  { q: 'Do I need a credit card to start the trial?', a: 'No. The 7-day trial is completely free — we only ask for a card if you decide to continue after it ends.' },
+                  { q: 'When will my card be charged?', a: 'Your card is charged once the 7-day free trial ends. Cancel any time before then from Settings → Billing and you won\'t be charged.' },
                   { q: 'Can I switch plans later?',                   a: 'Yes. Upgrade or downgrade at any time from Settings → Billing. We prorate the difference automatically.' },
                   { q: 'What payment methods do you accept?',          a: 'All major cards via Stripe. Enterprise customers can request ACH or invoicing.' },
                 ].map((item) => (
