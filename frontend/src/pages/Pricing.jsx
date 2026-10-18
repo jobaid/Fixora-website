@@ -1,8 +1,57 @@
 import { useEffect, useState } from 'react'
-import { Check, Loader2, ShieldCheck, Zap, CreditCard, HelpCircle, ArrowRight, Sparkles } from 'lucide-react'
+import {
+  Check, Loader2, ShieldCheck, Zap, CreditCard, HelpCircle, ArrowRight, Sparkles,
+  Rocket, Gauge, Building2, Wrench, Star, Clock, Users, Phone,
+} from 'lucide-react'
 import { api } from '../lib/api'
 
 const APP_ORIGIN = import.meta.env.VITE_APP_ORIGIN || 'https://apps.2set.com'
+
+// Visual identity per plan — picked by the plan key or name.
+const PLAN_THEMES = {
+  starter: {
+    icon: Rocket,
+    gradient: 'from-sky-500 to-blue-600',
+    soft: 'from-sky-50 to-blue-50',
+    ring: 'ring-sky-200',
+    accent: 'text-sky-600',
+    glow: 'shadow-sky-500/20',
+  },
+  professional: {
+    icon: Gauge,
+    gradient: 'from-brand-500 to-indigo-600',
+    soft: 'from-indigo-50 to-brand-50',
+    ring: 'ring-indigo-200',
+    accent: 'text-indigo-600',
+    glow: 'shadow-indigo-500/30',
+  },
+  business: {
+    icon: Building2,
+    gradient: 'from-amber-500 to-orange-600',
+    soft: 'from-amber-50 to-orange-50',
+    ring: 'ring-amber-200',
+    accent: 'text-amber-600',
+    glow: 'shadow-amber-500/20',
+  },
+  default: {
+    icon: Wrench,
+    gradient: 'from-slate-600 to-slate-800',
+    soft: 'from-slate-50 to-white',
+    ring: 'ring-slate-200',
+    accent: 'text-slate-600',
+    glow: 'shadow-slate-500/20',
+  },
+}
+
+function themeFor(plan) {
+  const key = String(plan?.key || plan?.name || '').toLowerCase()
+  if (key.includes('start'))   return PLAN_THEMES.starter
+  if (key.includes('pro'))     return PLAN_THEMES.professional
+  if (key.includes('bus'))     return PLAN_THEMES.business
+  if (key.includes('team'))    return PLAN_THEMES.business
+  if (key.includes('enterp'))  return PLAN_THEMES.business
+  return PLAN_THEMES.default
+}
 
 export default function Pricing() {
   const [plans, setPlans] = useState([])
@@ -23,38 +72,45 @@ export default function Pricing() {
   return (
     <div className="relative overflow-hidden">
       {/* Soft gradient backdrop */}
-      <div aria-hidden className="absolute inset-x-0 top-0 h-[520px] -z-10"
-        style={{ background: 'radial-gradient(ellipse at 50% -20%, rgba(60,109,255,0.18), transparent 60%), linear-gradient(180deg,#f8fbff,#ffffff)' }} />
+      <div aria-hidden className="absolute inset-x-0 top-0 h-[620px] -z-10"
+        style={{ background: 'radial-gradient(ellipse at 50% -20%, rgba(60,109,255,0.22), transparent 60%), linear-gradient(180deg,#f6faff,#ffffff)' }} />
+      {/* Decorative dot grid */}
+      <div aria-hidden className="absolute inset-x-0 top-0 h-[620px] -z-10 opacity-[0.35]"
+        style={{ backgroundImage: 'radial-gradient(#cbd5e1 1px, transparent 1px)', backgroundSize: '22px 22px', maskImage: 'linear-gradient(180deg, black, transparent 70%)' }} />
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-20 pb-24">
         {/* Hero */}
         <div className="text-center max-w-2xl mx-auto">
-          <span className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-full bg-brand-50 text-brand-700 border border-brand-100">
-            <Sparkles size={12} /> Simple, honest pricing
+          <span className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-full bg-brand-50 text-brand-700 border border-brand-100 shadow-sm">
+            <Sparkles size={12} /> Simple, honest pricing — no hidden fees
           </span>
-          <h1 className="mt-4 text-4xl sm:text-5xl font-extrabold text-slate-900 tracking-tight">
-            Pick a plan. <span className="bg-gradient-to-r from-brand-600 to-indigo-600 bg-clip-text text-transparent">Start free.</span>
+          <h1 className="mt-5 text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.05]">
+            Pricing built for{' '}
+            <span className="bg-gradient-to-r from-brand-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
+              every shop.
+            </span>
           </h1>
-          <p className="mt-4 text-lg text-slate-600">
-            Full access during your free trial. No charge until it ends. Cancel any time from Settings.
+          <p className="mt-5 text-lg text-slate-600 leading-relaxed">
+            Full feature access during your <strong className="text-slate-900">7-day free trial</strong>.
+            No charge until it ends. Cancel any time, right from Settings.
           </p>
 
           {/* Monthly / Annual toggle */}
-          <div className="mt-7 inline-flex items-center gap-1 p-1 bg-slate-900/5 backdrop-blur rounded-full border border-slate-200">
+          <div className="mt-8 inline-flex items-center gap-1 p-1 bg-white/70 backdrop-blur rounded-full border border-slate-200 shadow-sm">
             <button onClick={() => setAnnual(false)}
-              className={`px-5 py-2 rounded-full text-sm font-semibold transition ${!annual ? 'bg-white text-slate-900 shadow' : 'text-slate-600 hover:text-slate-900'}`}>
+              className={`px-6 py-2 rounded-full text-sm font-semibold transition ${!annual ? 'bg-slate-900 text-white shadow' : 'text-slate-600 hover:text-slate-900'}`}>
               Monthly
             </button>
             <button onClick={() => setAnnual(true)}
-              className={`px-5 py-2 rounded-full text-sm font-semibold transition inline-flex items-center gap-2 ${annual ? 'bg-white text-slate-900 shadow' : 'text-slate-600 hover:text-slate-900'}`}>
+              className={`px-6 py-2 rounded-full text-sm font-semibold transition inline-flex items-center gap-2 ${annual ? 'bg-slate-900 text-white shadow' : 'text-slate-600 hover:text-slate-900'}`}>
               Annual
-              <span className={`px-1.5 py-0.5 rounded text-[10px] font-bold ${annual ? 'bg-emerald-100 text-emerald-700' : 'bg-slate-200 text-slate-600'}`}>SAVE ~20%</span>
+              <span className={`px-1.5 py-0.5 rounded text-[10px] font-bold ${annual ? 'bg-emerald-400 text-emerald-900' : 'bg-emerald-100 text-emerald-700'}`}>SAVE ~20%</span>
             </button>
           </div>
         </div>
 
         {loading && (
-          <div className="mt-20 flex justify-center text-slate-500">
+          <div className="mt-24 flex justify-center text-slate-500">
             <Loader2 className="animate-spin mr-2" size={18} /> Loading plans…
           </div>
         )}
@@ -65,87 +121,168 @@ export default function Pricing() {
         {!loading && !err && (
           <>
             {/* Plan cards */}
-            <div className="mt-14 grid grid-cols-1 md:grid-cols-3 gap-6 items-stretch">
+            <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 items-stretch">
               {plans.map((p) => {
+                const theme = themeFor(p)
+                const Icon = theme.icon
                 const price = annual && p.annualPrice ? p.annualPrice / 12 : p.monthlyPrice
                 const total = annual ? p.annualPrice : p.monthlyPrice
                 const save = annualSavePct(p)
                 const signupHref = (p.signupUrl || `${APP_ORIGIN}/signup?plan=${p.key}`) + (annual ? '&cycle=annual' : '')
                 const isTop = p.highlighted
+
                 return (
                   <div key={p.key}
-                    className={`relative flex flex-col rounded-2xl p-8 transition
+                    className={`relative flex flex-col rounded-3xl p-8 transition-all duration-300 group
                       ${isTop
-                        ? 'bg-gradient-to-br from-slate-900 to-slate-800 text-white shadow-2xl shadow-brand-500/20 ring-1 ring-white/10 md:-mt-4 md:mb-4'
-                        : 'bg-white border border-slate-200 shadow-sm hover:shadow-md'}`}>
-                    {isTop && (
-                      <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 text-[11px] font-bold rounded-full bg-gradient-to-r from-brand-500 to-indigo-500 text-white shadow-lg">
-                        MOST POPULAR
-                      </span>
-                    )}
-                    <div className={`text-sm font-semibold ${isTop ? 'text-brand-300' : 'text-brand-600'}`}>{p.name}</div>
-                    <p className={`mt-2 text-sm min-h-[2.75rem] ${isTop ? 'text-slate-300' : 'text-slate-600'}`}>{p.tagline || ' '}</p>
+                        ? `bg-gradient-to-br from-slate-900 via-slate-900 to-slate-800 text-white shadow-2xl ${theme.glow} ring-1 ring-white/10 md:-mt-6 md:mb-6 hover:shadow-[0_30px_80px_-15px_rgba(37,84,245,0.5)]`
+                        : `bg-white border border-slate-200 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-slate-300`}`}>
 
+                    {isTop && (
+                      <>
+                        {/* Glow halo */}
+                        <div aria-hidden className="absolute -inset-px rounded-3xl bg-gradient-to-br from-brand-500/40 via-indigo-500/30 to-purple-500/40 -z-10 blur-xl opacity-60" />
+                        <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 inline-flex items-center gap-1 px-3 py-1.5 text-[11px] font-bold rounded-full bg-gradient-to-r from-amber-400 via-pink-500 to-indigo-500 text-white shadow-lg uppercase tracking-wider">
+                          <Star size={11} className="fill-white" /> Most Popular
+                        </span>
+                      </>
+                    )}
+
+                    {/* Plan logo badge */}
+                    <div className={`w-14 h-14 rounded-2xl grid place-items-center shadow-lg
+                      bg-gradient-to-br ${theme.gradient} ${isTop ? 'ring-2 ring-white/20' : `ring-1 ${theme.ring}`}
+                      group-hover:scale-110 group-hover:rotate-[-6deg] transition-transform duration-300`}>
+                      <Icon size={26} className="text-white drop-shadow" />
+                    </div>
+
+                    <div className="mt-5 flex items-center gap-2">
+                      <h3 className={`text-xl font-bold ${isTop ? 'text-white' : 'text-slate-900'}`}>{p.name}</h3>
+                    </div>
+                    <p className={`mt-2 text-sm leading-relaxed min-h-[2.75rem] ${isTop ? 'text-slate-300' : 'text-slate-600'}`}>
+                      {p.tagline || ' '}
+                    </p>
+
+                    {/* Price */}
                     <div className="mt-6 flex items-baseline gap-1">
-                      <span className={`text-5xl font-extrabold tracking-tight ${isTop ? 'text-white' : 'text-slate-900'}`}>
-                        ${Math.round(price)}
+                      <span className={`text-sm font-semibold mr-0.5 ${isTop ? 'text-slate-400' : 'text-slate-500'}`}>$</span>
+                      <span className={`text-6xl font-extrabold tracking-tight tabular-nums ${isTop ? 'text-white' : 'text-slate-900'}`}>
+                        {Math.round(price)}
                       </span>
-                      <span className={`text-sm ${isTop ? 'text-slate-400' : 'text-slate-500'}`}>/mo</span>
+                      <span className={`text-sm ml-1 ${isTop ? 'text-slate-400' : 'text-slate-500'}`}>/month</span>
                     </div>
-                    <div className={`text-xs ${isTop ? 'text-slate-400' : 'text-slate-500'}`}>
-                      {annual ? <>Billed <strong>${total}</strong>/year {save > 0 && <span className="text-emerald-400">— save {save}%</span>}</> : 'Billed monthly'}
+                    <div className={`mt-1 text-xs ${isTop ? 'text-slate-400' : 'text-slate-500'}`}>
+                      {annual ? (
+                        <>Billed <strong className={isTop ? 'text-slate-200' : 'text-slate-700'}>${total}</strong>/year
+                          {save > 0 && <span className="ml-1.5 font-semibold text-emerald-500">— save {save}%</span>}
+                        </>
+                      ) : 'Billed monthly, no commitment'}
                     </div>
+
                     {p.trialDays > 0 && (
-                      <div className={`mt-3 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold w-fit
-                        ${isTop ? 'bg-emerald-500/20 text-emerald-300' : 'bg-emerald-50 text-emerald-700'}`}>
-                        <Zap size={11} /> {p.trialDays}-day free trial
+                      <div className={`mt-4 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-[11px] font-semibold w-fit
+                        ${isTop ? 'bg-emerald-500/20 text-emerald-300 ring-1 ring-emerald-400/30' : 'bg-emerald-50 text-emerald-700 ring-1 ring-emerald-100'}`}>
+                        <Clock size={11} /> {p.trialDays}-day free trial included
                       </div>
                     )}
 
+                    {/* CTA */}
                     <a href={signupHref}
-                      className={`mt-7 inline-flex items-center justify-center gap-2 w-full px-4 py-3 rounded-xl font-semibold text-sm transition
+                      className={`mt-7 inline-flex items-center justify-center gap-2 w-full px-4 py-3.5 rounded-xl font-semibold text-sm transition-all
                         ${isTop
-                          ? 'bg-white text-slate-900 hover:bg-slate-100'
-                          : 'bg-slate-900 text-white hover:bg-slate-800'}`}>
-                      Start free trial <ArrowRight size={16} />
+                          ? 'bg-white text-slate-900 hover:bg-slate-100 shadow-lg hover:shadow-xl'
+                          : `bg-gradient-to-r ${theme.gradient} text-white shadow-md hover:shadow-lg hover:brightness-110`}`}>
+                      Start free trial
+                      <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
                     </a>
 
-                    <ul className={`mt-6 space-y-2.5 text-sm flex-1 ${isTop ? 'text-slate-200' : 'text-slate-700'}`}>
-                      {(p.features || []).map((f) => (
-                        <li key={f} className="flex items-start gap-2.5">
-                          <span className={`mt-0.5 flex-shrink-0 w-4 h-4 rounded-full grid place-items-center
-                            ${isTop ? 'bg-emerald-500/20' : 'bg-emerald-100'}`}>
-                            <Check size={11} className={isTop ? 'text-emerald-300' : 'text-emerald-700'} />
-                          </span>
-                          <span>{String(f).replace(/_/g, ' ')}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    {/* Divider */}
+                    <div className={`mt-7 pt-6 border-t ${isTop ? 'border-white/10' : 'border-slate-100'}`}>
+                      <div className={`text-[11px] font-bold uppercase tracking-wider mb-3 ${isTop ? 'text-slate-400' : theme.accent}`}>
+                        What's included
+                      </div>
+                      <ul className={`space-y-3 text-sm flex-1 ${isTop ? 'text-slate-200' : 'text-slate-700'}`}>
+                        {(p.features || []).map((f) => (
+                          <li key={f} className="flex items-start gap-2.5">
+                            <span className={`mt-0.5 flex-shrink-0 w-5 h-5 rounded-full grid place-items-center shadow-sm
+                              ${isTop ? 'bg-emerald-400/20 ring-1 ring-emerald-400/30' : `bg-gradient-to-br ${theme.gradient}`}`}>
+                              <Check size={12} className={isTop ? 'text-emerald-300' : 'text-white'} strokeWidth={3} />
+                            </span>
+                            <span className="leading-relaxed">{String(f).replace(/_/g, ' ')}</span>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
                 )
               })}
             </div>
 
             {/* Trust strip */}
-            <div className="mt-16 flex flex-wrap justify-center gap-x-8 gap-y-3 text-slate-600 text-sm">
-              <span className="inline-flex items-center gap-2"><ShieldCheck size={16} className="text-brand-600" /> Bank-grade encryption</span>
-              <span className="inline-flex items-center gap-2"><Zap size={16} className="text-brand-600" /> Setup in minutes</span>
-              <span className="inline-flex items-center gap-2"><CreditCard size={16} className="text-brand-600" /> No credit card during trial</span>
-              <span className="inline-flex items-center gap-2"><HelpCircle size={16} className="text-brand-600" /> Cancel any time</span>
+            <div className="mt-20">
+              <div className="text-center text-xs font-bold uppercase tracking-wider text-slate-500 mb-6">
+                Every plan includes
+              </div>
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
+                {[
+                  { icon: ShieldCheck, title: 'Bank-grade security', body: 'AES-GCM at rest. TLS everywhere.' },
+                  { icon: Zap,         title: 'Setup in minutes',   body: 'No installs. No training needed.' },
+                  { icon: CreditCard,  title: 'No card for trial',  body: 'Zero friction to get started.' },
+                  { icon: HelpCircle,  title: 'Cancel any time',    body: 'From Settings → Billing.' },
+                ].map((item) => (
+                  <div key={item.title} className="flex flex-col items-start gap-2 p-4 rounded-xl bg-white/60 backdrop-blur border border-slate-200/70 hover:border-slate-300 hover:shadow-sm transition">
+                    <span className="w-9 h-9 rounded-lg bg-gradient-to-br from-brand-500 to-indigo-600 text-white grid place-items-center shadow-md">
+                      <item.icon size={17} />
+                    </span>
+                    <div className="font-semibold text-slate-900 text-sm">{item.title}</div>
+                    <div className="text-xs text-slate-600 leading-relaxed">{item.body}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Mini FAQ */}
+            <div className="mt-20 max-w-3xl mx-auto">
+              <div className="text-center mb-8">
+                <h2 className="text-2xl font-bold text-slate-900">Pricing questions, answered</h2>
+                <p className="mt-2 text-sm text-slate-600">Still unsure? Head to the <a href="/faq" className="text-brand-600 font-semibold hover:underline">full FAQ</a>.</p>
+              </div>
+              <div className="space-y-3">
+                {[
+                  { q: 'Do I need a credit card to start the trial?', a: 'No. The 7-day trial is completely free — we only ask for a card if you decide to continue after it ends.' },
+                  { q: 'Can I switch plans later?',                   a: 'Yes. Upgrade or downgrade at any time from Settings → Billing. We prorate the difference automatically.' },
+                  { q: 'What payment methods do you accept?',          a: 'All major cards via Stripe. Enterprise customers can request ACH or invoicing.' },
+                ].map((item) => (
+                  <details key={item.q} className="group bg-white border border-slate-200 rounded-xl p-5 open:shadow-md transition">
+                    <summary className="flex items-center justify-between cursor-pointer list-none font-semibold text-slate-900">
+                      {item.q}
+                      <span className="ml-2 w-6 h-6 rounded-full bg-slate-100 grid place-items-center text-slate-500 group-open:rotate-45 transition-transform text-lg leading-none">+</span>
+                    </summary>
+                    <p className="mt-3 text-sm text-slate-600 leading-relaxed">{item.a}</p>
+                  </details>
+                ))}
+              </div>
             </div>
 
             {/* Secondary CTA / sales */}
-            <div className="mt-14 max-w-3xl mx-auto p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-brand-50 to-white border border-brand-100 flex flex-col sm:flex-row sm:items-center gap-5">
-              <div className="flex-1">
-                <div className="font-semibold text-slate-900">Need a custom plan, SSO, or multi-shop support?</div>
-                <div className="mt-1 text-sm text-slate-600">
-                  Talk to us — we'll tailor pricing + features to your shop.
+            <div className="mt-20 relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-900 p-8 sm:p-10">
+              <div aria-hidden className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-brand-500/20 blur-3xl" />
+              <div aria-hidden className="absolute -bottom-24 -left-10 w-80 h-80 rounded-full bg-indigo-500/20 blur-3xl" />
+              <div className="relative flex flex-col sm:flex-row sm:items-center gap-6">
+                <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur ring-1 ring-white/20 grid place-items-center text-white flex-shrink-0">
+                  <Users size={26} />
                 </div>
+                <div className="flex-1">
+                  <div className="text-xl font-bold text-white">Running multiple shops or need SSO?</div>
+                  <div className="mt-1 text-sm text-slate-300 max-w-xl">
+                    Enterprise, multi-location, custom integrations — we'll build pricing that fits.
+                    Typical response in under one business hour.
+                  </div>
+                </div>
+                <a href="/contact"
+                  className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-white text-slate-900 font-semibold text-sm hover:bg-slate-100 shadow-lg flex-shrink-0">
+                  <Phone size={14} /> Talk to sales <ArrowRight size={14} />
+                </a>
               </div>
-              <a href="/contact"
-                className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-slate-900 text-white font-semibold text-sm hover:bg-slate-800">
-                Contact sales <ArrowRight size={14} />
-              </a>
             </div>
           </>
         )}
