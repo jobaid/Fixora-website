@@ -2,6 +2,9 @@ import { useEffect, useState } from 'react'
 import {
   Check, Loader2, ShieldCheck, Zap, CreditCard, HelpCircle, ArrowRight, Sparkles,
   Rocket, Gauge, Building2, Wrench, Star, Clock, Users, Phone,
+  FileText, ClipboardCheck, Smartphone, MessageSquare, Mail, BarChart3,
+  Car, Package, Receipt, Lock, Headphones, Database, Globe, Cloud, Bell,
+  Calendar, UserCheck, Settings, Infinity, Palette, Truck, DollarSign, PieChart, Camera, QrCode,
 } from 'lucide-react'
 import { api } from '../lib/api'
 
@@ -41,6 +44,46 @@ const PLAN_THEMES = {
     accent: 'text-slate-600',
     glow: 'shadow-slate-500/20',
   },
+}
+
+// Map a feature string to an attractive icon + color based on keywords.
+const FEATURE_RULES = [
+  { re: /\bestimate/i,                       icon: FileText,        tint: 'from-blue-500 to-indigo-600' },
+  { re: /\brepair\s*order|workorder|\bro\b/i, icon: Wrench,          tint: 'from-indigo-500 to-purple-600' },
+  { re: /\binspection|vehicle check/i,       icon: ClipboardCheck,  tint: 'from-emerald-500 to-teal-600' },
+  { re: /\bphoto|image|camera/i,             icon: Camera,          tint: 'from-pink-500 to-rose-600' },
+  { re: /\binvoice|receipt/i,                icon: Receipt,         tint: 'from-amber-500 to-orange-600' },
+  { re: /\bpayment|stripe|checkout|\bpay\b/i, icon: CreditCard,     tint: 'from-emerald-500 to-green-600' },
+  { re: /\brevenue|profit|margin|dollar|price/i, icon: DollarSign,  tint: 'from-emerald-600 to-teal-700' },
+  { re: /\breport|analytics|dashboard|chart/i, icon: BarChart3,     tint: 'from-violet-500 to-indigo-600' },
+  { re: /\binsight|metric|kpi/i,             icon: PieChart,        tint: 'from-fuchsia-500 to-pink-600' },
+  { re: /\bchat|message|sms|text/i,          icon: MessageSquare,   tint: 'from-sky-500 to-blue-600' },
+  { re: /\bemail|mail|notification/i,        icon: Mail,            tint: 'from-cyan-500 to-blue-600' },
+  { re: /\balert|reminder|notify/i,          icon: Bell,            tint: 'from-amber-500 to-yellow-600' },
+  { re: /\bmobile|phone|app|android|ios/i,   icon: Smartphone,      tint: 'from-indigo-500 to-blue-600' },
+  { re: /\btechnician|tech\b|mechanic|staff|employee/i, icon: UserCheck, tint: 'from-blue-500 to-cyan-600' },
+  { re: /\bcustomer|client/i,                icon: Users,           tint: 'from-blue-500 to-indigo-600' },
+  { re: /\bvehicle|\bcar\b|\bfleet\b/i,      icon: Car,             tint: 'from-slate-600 to-slate-800' },
+  { re: /\btow|delivery|pickup/i,            icon: Truck,           tint: 'from-orange-500 to-red-600' },
+  { re: /\bpart(s)?|inventory|stock|catalog/i, icon: Package,       tint: 'from-amber-500 to-orange-600' },
+  { re: /\bqr|barcode|scan/i,                icon: QrCode,          tint: 'from-slate-700 to-slate-900' },
+  { re: /\bsecurity|mfa|2fa|encrypt|argon|aes/i, icon: Lock,        tint: 'from-rose-500 to-red-600' },
+  { re: /\bisolation|tenant|company|data/i,  icon: Database,        tint: 'from-indigo-600 to-blue-700' },
+  { re: /\bsupport|help|chat.*agent|priority/i, icon: Headphones,   tint: 'from-fuchsia-500 to-purple-600' },
+  { re: /\bapi|integration|webhook/i,        icon: Globe,           tint: 'from-cyan-500 to-sky-600' },
+  { re: /\bcloud|backup|storage/i,           icon: Cloud,           tint: 'from-sky-400 to-indigo-500' },
+  { re: /\bschedul|calendar|booking|appointment/i, icon: Calendar,  tint: 'from-rose-500 to-pink-600' },
+  { re: /\brole|permission|admin|access/i,   icon: Settings,        tint: 'from-slate-500 to-slate-700' },
+  { re: /\bunlimited|unlimit|infinit/i,      icon: Infinity,        tint: 'from-purple-500 to-fuchsia-600' },
+  { re: /\bbrand|logo|white[- ]?label|custom/i, icon: Palette,      tint: 'from-pink-500 to-rose-600' },
+  { re: /\btrial|free|days?/i,               icon: Clock,           tint: 'from-emerald-500 to-teal-600' },
+  { re: /\bshield|protect|guard/i,           icon: ShieldCheck,     tint: 'from-emerald-500 to-green-600' },
+  { re: /\bfast|speed|instant|quick/i,       icon: Zap,             tint: 'from-amber-400 to-orange-500' },
+]
+function iconFor(feature) {
+  const text = String(feature || '')
+  for (const r of FEATURE_RULES) if (r.re.test(text)) return r
+  return { icon: Sparkles, tint: 'from-slate-500 to-slate-700' }
 }
 
 function themeFor(plan) {
@@ -201,15 +244,21 @@ export default function Pricing() {
                         What's included
                       </div>
                       <ul className={`space-y-3 text-sm flex-1 ${isTop ? 'text-slate-200' : 'text-slate-700'}`}>
-                        {(p.features || []).map((f) => (
-                          <li key={f} className="flex items-start gap-2.5">
-                            <span className={`mt-0.5 flex-shrink-0 w-5 h-5 rounded-full grid place-items-center shadow-sm
-                              ${isTop ? 'bg-emerald-400/20 ring-1 ring-emerald-400/30' : `bg-gradient-to-br ${theme.gradient}`}`}>
-                              <Check size={12} className={isTop ? 'text-emerald-300' : 'text-white'} strokeWidth={3} />
-                            </span>
-                            <span className="leading-relaxed">{String(f).replace(/_/g, ' ')}</span>
-                          </li>
-                        ))}
+                        {(p.features || []).map((f) => {
+                          const label = String(f).replace(/_/g, ' ')
+                          const { icon: FIcon, tint } = iconFor(label)
+                          return (
+                            <li key={f} className="flex items-start gap-3 group/feat">
+                              <span className={`mt-0.5 flex-shrink-0 w-7 h-7 rounded-lg grid place-items-center shadow-sm
+                                bg-gradient-to-br ${tint}
+                                ${isTop ? 'ring-1 ring-white/20' : 'ring-1 ring-white/40'}
+                                group-hover/feat:scale-110 group-hover/feat:-rotate-3 transition-transform duration-200`}>
+                                <FIcon size={14} className="text-white drop-shadow" strokeWidth={2.3} />
+                              </span>
+                              <span className="leading-relaxed pt-0.5">{label}</span>
+                            </li>
+                          )
+                        })}
                       </ul>
                     </div>
                   </div>
