@@ -17,9 +17,9 @@ export default function Navbar() {
   const [open, setOpen] = useState(false)
   return (
     <header className="sticky top-0 z-40 bg-white/85 backdrop-blur border-b border-slate-200 shadow-sm">
-      <nav className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center h-16 gap-6">
-        <Link to="/" aria-label="Fixora home" className="flex items-center">
-          <Logo height={38} />
+      <nav className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center h-20 gap-6">
+        <Link to="/" aria-label="Fixora home" className="flex items-center shrink-0">
+          <Logo height={64} className="drop-shadow-sm" />
         </Link>
         <div className="hidden md:flex items-center gap-1 ml-6">
           {nav.map((n) => (

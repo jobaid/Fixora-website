@@ -6,7 +6,7 @@ export default function Footer() {
     <footer className="border-t border-slate-200 bg-slate-50 mt-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10 grid grid-cols-2 md:grid-cols-4 gap-8">
         <div>
-          <Logo size={36} />
+          <Logo height={56} />
           <p className="mt-3 text-sm text-slate-600">Modern shop management for independent repair shops.</p>
         </div>
         <div>
