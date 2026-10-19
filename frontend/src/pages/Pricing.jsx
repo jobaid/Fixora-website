@@ -22,11 +22,11 @@ const PLAN_THEMES = {
   },
   professional: {
     icon: Gauge,
-    gradient: 'from-brand-500 to-indigo-600',
-    soft: 'from-indigo-50 to-brand-50',
-    ring: 'ring-indigo-200',
-    accent: 'text-indigo-600',
-    glow: 'shadow-indigo-500/30',
+    gradient: 'from-brand-500 to-brand-700',
+    soft: 'from-amber-50 to-brand-50',
+    ring: 'ring-amber-200',
+    accent: 'text-amber-600',
+    glow: 'shadow-brand-500/30',
   },
   business: {
     icon: Building2,
@@ -48,33 +48,33 @@ const PLAN_THEMES = {
 
 // Map a feature string to an attractive icon + color based on keywords.
 const FEATURE_RULES = [
-  { re: /\bestimate/i,                       icon: FileText,        tint: 'from-blue-500 to-indigo-600' },
-  { re: /\brepair\s*order|workorder|\bro\b/i, icon: Wrench,          tint: 'from-indigo-500 to-purple-600' },
+  { re: /\bestimate/i,                       icon: FileText,        tint: 'from-brand-500 to-brand-700' },
+  { re: /\brepair\s*order|workorder|\bro\b/i, icon: Wrench,          tint: 'from-amber-500 to-brand-600' },
   { re: /\binspection|vehicle check/i,       icon: ClipboardCheck,  tint: 'from-emerald-500 to-teal-600' },
   { re: /\bphoto|image|camera/i,             icon: Camera,          tint: 'from-pink-500 to-rose-600' },
   { re: /\binvoice|receipt/i,                icon: Receipt,         tint: 'from-amber-500 to-orange-600' },
   { re: /\bpayment|stripe|checkout|\bpay\b/i, icon: CreditCard,     tint: 'from-emerald-500 to-green-600' },
   { re: /\brevenue|profit|margin|dollar|price/i, icon: DollarSign,  tint: 'from-emerald-600 to-teal-700' },
-  { re: /\breport|analytics|dashboard|chart/i, icon: BarChart3,     tint: 'from-violet-500 to-indigo-600' },
-  { re: /\binsight|metric|kpi/i,             icon: PieChart,        tint: 'from-fuchsia-500 to-pink-600' },
+  { re: /\breport|analytics|dashboard|chart/i, icon: BarChart3,     tint: 'from-amber-500 to-brand-600' },
+  { re: /\binsight|metric|kpi/i,             icon: PieChart,        tint: 'from-amber-400 to-brand-500' },
   { re: /\bchat|message|sms|text/i,          icon: MessageSquare,   tint: 'from-sky-500 to-blue-600' },
   { re: /\bemail|mail|notification/i,        icon: Mail,            tint: 'from-cyan-500 to-blue-600' },
   { re: /\balert|reminder|notify/i,          icon: Bell,            tint: 'from-amber-500 to-yellow-600' },
-  { re: /\bmobile|phone|app|android|ios/i,   icon: Smartphone,      tint: 'from-indigo-500 to-blue-600' },
+  { re: /\bmobile|phone|app|android|ios/i,   icon: Smartphone,      tint: 'from-amber-500 to-brand-500' },
   { re: /\btechnician|tech\b|mechanic|staff|employee/i, icon: UserCheck, tint: 'from-blue-500 to-cyan-600' },
-  { re: /\bcustomer|client/i,                icon: Users,           tint: 'from-blue-500 to-indigo-600' },
+  { re: /\bcustomer|client/i,                icon: Users,           tint: 'from-brand-500 to-brand-700' },
   { re: /\bvehicle|\bcar\b|\bfleet\b/i,      icon: Car,             tint: 'from-slate-600 to-slate-800' },
   { re: /\btow|delivery|pickup/i,            icon: Truck,           tint: 'from-orange-500 to-red-600' },
   { re: /\bpart(s)?|inventory|stock|catalog/i, icon: Package,       tint: 'from-amber-500 to-orange-600' },
   { re: /\bqr|barcode|scan/i,                icon: QrCode,          tint: 'from-slate-700 to-slate-900' },
   { re: /\bsecurity|mfa|2fa|encrypt|argon|aes/i, icon: Lock,        tint: 'from-rose-500 to-red-600' },
-  { re: /\bisolation|tenant|company|data/i,  icon: Database,        tint: 'from-indigo-600 to-blue-700' },
-  { re: /\bsupport|help|chat.*agent|priority/i, icon: Headphones,   tint: 'from-fuchsia-500 to-purple-600' },
+  { re: /\bisolation|tenant|company|data/i,  icon: Database,        tint: 'from-brand-600 to-brand-800' },
+  { re: /\bsupport|help|chat.*agent|priority/i, icon: Headphones,   tint: 'from-amber-400 to-brand-500' },
   { re: /\bapi|integration|webhook/i,        icon: Globe,           tint: 'from-cyan-500 to-sky-600' },
-  { re: /\bcloud|backup|storage/i,           icon: Cloud,           tint: 'from-sky-400 to-indigo-500' },
+  { re: /\bcloud|backup|storage/i,           icon: Cloud,           tint: 'from-amber-400 to-brand-500' },
   { re: /\bschedul|calendar|booking|appointment/i, icon: Calendar,  tint: 'from-rose-500 to-pink-600' },
   { re: /\brole|permission|admin|access/i,   icon: Settings,        tint: 'from-slate-500 to-slate-700' },
-  { re: /\bunlimited|unlimit|infinit/i,      icon: Infinity,        tint: 'from-purple-500 to-fuchsia-600' },
+  { re: /\bunlimited|unlimit|infinit/i,      icon: Infinity,        tint: 'from-amber-500 to-brand-500' },
   { re: /\bbrand|logo|white[- ]?label|custom/i, icon: Palette,      tint: 'from-pink-500 to-rose-600' },
   { re: /\btrial|free|days?/i,               icon: Clock,           tint: 'from-emerald-500 to-teal-600' },
   { re: /\bshield|protect|guard/i,           icon: ShieldCheck,     tint: 'from-emerald-500 to-green-600' },
@@ -116,7 +116,7 @@ export default function Pricing() {
     <div className="relative overflow-hidden">
       {/* Soft gradient backdrop */}
       <div aria-hidden className="absolute inset-x-0 top-0 h-[620px] -z-10"
-        style={{ background: 'radial-gradient(ellipse at 50% -20%, rgba(60,109,255,0.22), transparent 60%), linear-gradient(180deg,#f6faff,#ffffff)' }} />
+        style={{ background: 'radial-gradient(ellipse at 50% -20%, rgba(249,115,22,0.22), transparent 60%), linear-gradient(180deg,#f6faff,#ffffff)' }} />
       {/* Decorative dot grid */}
       <div aria-hidden className="absolute inset-x-0 top-0 h-[620px] -z-10 opacity-[0.35]"
         style={{ backgroundImage: 'radial-gradient(#cbd5e1 1px, transparent 1px)', backgroundSize: '22px 22px', maskImage: 'linear-gradient(180deg, black, transparent 70%)' }} />
@@ -129,7 +129,7 @@ export default function Pricing() {
           </span>
           <h1 className="mt-5 text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.05]">
             Pricing built for{' '}
-            <span className="bg-gradient-to-r from-brand-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-brand-500 via-brand-600 to-amber-500 bg-clip-text text-transparent">
               every shop.
             </span>
           </h1>
@@ -184,8 +184,8 @@ export default function Pricing() {
                     {isTop && (
                       <>
                         {/* Glow halo */}
-                        <div aria-hidden className="absolute -inset-px rounded-3xl bg-gradient-to-br from-brand-500/40 via-indigo-500/30 to-purple-500/40 -z-10 blur-xl opacity-60" />
-                        <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 inline-flex items-center gap-1 px-3 py-1.5 text-[11px] font-bold rounded-full bg-gradient-to-r from-amber-400 via-pink-500 to-indigo-500 text-white shadow-lg uppercase tracking-wider">
+                        <div aria-hidden className="absolute -inset-px rounded-3xl bg-gradient-to-br from-brand-500/50 via-amber-500/30 to-brand-600/50 -z-10 blur-xl opacity-60" />
+                        <span className="absolute -top-3.5 left-1/2 -translate-x-1/2 inline-flex items-center gap-1 px-3 py-1.5 text-[11px] font-bold rounded-full bg-gradient-to-r from-amber-300 via-brand-500 to-brand-700 text-white shadow-lg uppercase tracking-wider">
                           <Star size={11} className="fill-white" /> Most Popular
                         </span>
                       </>
@@ -279,7 +279,7 @@ export default function Pricing() {
                   { icon: HelpCircle,  title: 'Cancel any time',    body: 'From Settings → Billing.' },
                 ].map((item) => (
                   <div key={item.title} className="flex flex-col items-start gap-2 p-4 rounded-xl bg-white/60 backdrop-blur border border-slate-200/70 hover:border-slate-300 hover:shadow-sm transition">
-                    <span className="w-9 h-9 rounded-lg bg-gradient-to-br from-brand-500 to-indigo-600 text-white grid place-items-center shadow-md">
+                    <span className="w-9 h-9 rounded-lg bg-gradient-to-br from-brand-500 to-brand-700 text-white grid place-items-center shadow-md">
                       <item.icon size={17} />
                     </span>
                     <div className="font-semibold text-slate-900 text-sm">{item.title}</div>
@@ -313,9 +313,9 @@ export default function Pricing() {
             </div>
 
             {/* Secondary CTA / sales */}
-            <div className="mt-20 relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-900 p-8 sm:p-10">
+            <div className="mt-20 relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 p-8 sm:p-10">
               <div aria-hidden className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-brand-500/20 blur-3xl" />
-              <div aria-hidden className="absolute -bottom-24 -left-10 w-80 h-80 rounded-full bg-indigo-500/20 blur-3xl" />
+              <div aria-hidden className="absolute -bottom-24 -left-10 w-80 h-80 rounded-full bg-amber-500/20 blur-3xl" />
               <div className="relative flex flex-col sm:flex-row sm:items-center gap-6">
                 <div className="w-14 h-14 rounded-2xl bg-white/10 backdrop-blur ring-1 ring-white/20 grid place-items-center text-white flex-shrink-0">
                   <Users size={26} />

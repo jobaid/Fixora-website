@@ -64,12 +64,12 @@ export default function Home() {
       <section className="relative overflow-hidden">
         {/* Backdrop */}
         <div aria-hidden className="absolute inset-x-0 top-0 h-[760px] -z-10"
-          style={{ background: 'radial-gradient(ellipse at 20% -10%, rgba(60,109,255,0.25), transparent 55%), radial-gradient(ellipse at 85% 10%, rgba(139,92,246,0.18), transparent 55%), linear-gradient(180deg,#f5f9ff,#ffffff)' }} />
+          style={{ background: 'radial-gradient(ellipse at 20% -10%, rgba(249,115,22,0.22), transparent 55%), radial-gradient(ellipse at 85% 10%, rgba(234,88,12,0.18), transparent 55%), linear-gradient(180deg,#f5f9ff,#ffffff)' }} />
         <div aria-hidden className="absolute inset-x-0 top-0 h-[760px] -z-10 opacity-[0.3]"
           style={{ backgroundImage: 'radial-gradient(#cbd5e1 1px, transparent 1px)', backgroundSize: '22px 22px', maskImage: 'linear-gradient(180deg, black, transparent 70%)' }} />
         {/* Floating orbs */}
-        <div aria-hidden className="pointer-events-none absolute top-32 right-10 w-72 h-72 rounded-full bg-brand-400/20 blur-3xl -z-10 animate-orbit" />
-        <div aria-hidden className="pointer-events-none absolute top-60 left-5 w-72 h-72 rounded-full bg-indigo-400/15 blur-3xl -z-10 animate-orbit-rev" />
+        <div aria-hidden className="pointer-events-none absolute top-32 right-10 w-72 h-72 rounded-full bg-brand-400/25 blur-3xl -z-10 animate-orbit" />
+        <div aria-hidden className="pointer-events-none absolute top-60 left-5 w-72 h-72 rounded-full bg-amber-400/20 blur-3xl -z-10 animate-orbit-rev" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-16 pb-20 lg:pt-24">
           <div className="grid lg:grid-cols-5 gap-10 items-center">
@@ -81,7 +81,7 @@ export default function Home() {
               <h1 className="mt-5 text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-slate-900 leading-[1.03] animate-fade-up [animation-delay:120ms]">
                 Run your repair shop{' '}
                 <span className="relative inline-block">
-                  <span className="bg-gradient-to-r from-brand-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent bg-[length:200%_100%] animate-gradient-pan">smarter</span>
+                  <span className="bg-gradient-to-r from-brand-500 via-brand-600 to-amber-500 bg-clip-text text-transparent bg-[length:200%_100%] animate-gradient-pan">smarter</span>
                   <svg aria-hidden className="absolute left-0 -bottom-2 w-full" height="10" viewBox="0 0 300 10" preserveAspectRatio="none">
                     <path d="M2 7 Q 75 1 150 5 T 298 4" stroke="url(#u)" strokeWidth="3" strokeLinecap="round" fill="none"
                       strokeDasharray="320" strokeDashoffset="320" className="animate-draw-line" />
@@ -102,7 +102,7 @@ export default function Home() {
 
               <div className="mt-8 flex flex-wrap gap-3 animate-fade-up [animation-delay:360ms]">
                 <a href={`${APP_ORIGIN}/signup`}
-                  className="group relative inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-brand-500 to-indigo-600 text-white font-semibold shadow-lg shadow-brand-500/30 hover:shadow-xl hover:shadow-brand-500/40 hover:brightness-110 transition-all overflow-hidden">
+                  className="group relative inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-brand-500 to-brand-700 text-white font-semibold shadow-lg shadow-brand-500/30 hover:shadow-xl hover:shadow-brand-500/40 hover:brightness-110 transition-all overflow-hidden">
                   <span aria-hidden className="absolute inset-0 rounded-xl bg-white/20 opacity-0 animate-ping-slow" />
                   <span aria-hidden className="absolute inset-0 -translate-x-full group-hover:translate-x-full transition-transform duration-700 bg-gradient-to-r from-transparent via-white/30 to-transparent" />
                   <span className="relative">Start free trial</span>
@@ -124,7 +124,7 @@ export default function Home() {
               {/* Social proof */}
               <div className="mt-8 flex items-center gap-4 animate-fade-up [animation-delay:600ms]">
                 <div className="flex -space-x-2">
-                  {['from-brand-500 to-indigo-600', 'from-emerald-500 to-teal-600', 'from-amber-500 to-orange-600', 'from-pink-500 to-rose-600'].map((g, i) => (
+                  {['from-brand-500 to-brand-700', 'from-emerald-500 to-teal-600', 'from-amber-500 to-orange-600', 'from-pink-500 to-rose-600'].map((g, i) => (
                     <span key={i} className={`w-9 h-9 rounded-full bg-gradient-to-br ${g} ring-2 ring-white text-white text-xs font-bold grid place-items-center shadow`}>
                       {'JMAK'[i]}
                     </span>
@@ -179,7 +179,7 @@ export default function Home() {
           {[
             { v: 'Time to send an estimate',  Icon: Zap,          tint: 'from-amber-500 to-orange-500', node: <><CountUp to={2} /> min</> },
             { v: 'Online approval rate',       Icon: CheckCircle2, tint: 'from-emerald-500 to-teal-600', node: <><CountUp to={94} />%</> },
-            { v: 'Faster than paper',          Icon: TrendingUp,   tint: 'from-brand-500 to-indigo-600', node: <><CountUp to={3} />×</> },
+            { v: 'Faster than paper',          Icon: TrendingUp,   tint: 'from-brand-500 to-brand-700', node: <><CountUp to={3} />×</> },
             { v: 'Setup, start to finish',     Icon: Wrench,       tint: 'from-pink-500 to-rose-600',    node: <>&lt; <CountUp to={5} /> min</> },
           ].map((s, i) => (
             <Reveal key={s.v} delay={i * 80}>
@@ -200,11 +200,11 @@ export default function Home() {
       {/* ───────────── Features grid ───────────── */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 py-20">
         <div className="text-center max-w-2xl mx-auto">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-full bg-indigo-50 text-indigo-700 border border-indigo-100">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-full bg-amber-50 text-amber-700 border border-amber-100">
             <Sparkles size={12} /> Why shops switch to Fixora
           </div>
           <h2 className="mt-4 text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
-            Everything your shop runs on, in <span className="bg-gradient-to-r from-brand-600 to-indigo-600 bg-clip-text text-transparent">one place</span>.
+            Everything your shop runs on, in <span className="bg-gradient-to-r from-brand-500 to-amber-500 bg-clip-text text-transparent">one place</span>.
           </h2>
           <p className="mt-3 text-slate-600 leading-relaxed">
             From the first phone call to the paid invoice — track every step without juggling paper, spreadsheets, and sticky notes.
@@ -240,13 +240,13 @@ export default function Home() {
               <TrendingUp size={12} /> The Fixora workflow
             </div>
             <h2 className="mt-4 text-3xl sm:text-4xl font-bold text-slate-900">
-              From estimate to invoice, <span className="bg-gradient-to-r from-brand-600 to-indigo-600 bg-clip-text text-transparent">one clean flow</span>.
+              From estimate to invoice, <span className="bg-gradient-to-r from-brand-500 to-amber-500 bg-clip-text text-transparent">one clean flow</span>.
             </h2>
             <p className="mt-3 text-slate-600">Each step is linked — a change in one place updates everything downstream automatically.</p>
           </div>
 
           <div className="mt-14 relative">
-            <div aria-hidden className="hidden md:block absolute left-[10%] right-[10%] top-10 h-0.5 bg-gradient-to-r from-sky-200 via-indigo-200 to-amber-200" />
+            <div aria-hidden className="hidden md:block absolute left-[10%] right-[10%] top-10 h-0.5 bg-gradient-to-r from-amber-200 via-brand-200 to-amber-300" />
             <ol className="grid grid-cols-2 md:grid-cols-5 gap-4">
               {workflow.map((w, i) => (
                 <Reveal key={w.title} as="li" delay={i * 120}>
@@ -307,9 +307,9 @@ export default function Home() {
 
       {/* ───────────── Final CTA ───────────── */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 pb-24">
-        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-900 p-10 sm:p-14 text-center">
+        <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 p-10 sm:p-14 text-center">
           <div aria-hidden className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-brand-500/20 blur-3xl" />
-          <div aria-hidden className="absolute -bottom-32 -left-20 w-96 h-96 rounded-full bg-indigo-500/20 blur-3xl" />
+          <div aria-hidden className="absolute -bottom-32 -left-20 w-96 h-96 rounded-full bg-amber-500/20 blur-3xl" />
           <div aria-hidden className="absolute inset-0 opacity-[0.15]"
             style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
 
@@ -318,7 +318,7 @@ export default function Home() {
               <Sparkles size={12} /> Try Fixora today
             </div>
             <h2 className="mt-5 text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
-              Ready to run your shop <span className="bg-gradient-to-r from-amber-300 via-pink-400 to-indigo-300 bg-clip-text text-transparent">on autopilot</span>?
+              Ready to run your shop <span className="bg-gradient-to-r from-amber-300 via-orange-400 to-amber-200 bg-clip-text text-transparent">on autopilot</span>?
             </h2>
             <p className="mt-4 text-slate-300 max-w-2xl mx-auto">
               Full access during your 7-day trial. No credit card. Cancel from Settings any time.
@@ -345,7 +345,7 @@ export default function Home() {
 function HeroVisual() {
   return (
     <div className="relative">
-      <div aria-hidden className="absolute -inset-6 bg-gradient-to-br from-brand-500/30 via-indigo-500/20 to-purple-500/30 rounded-[2rem] blur-3xl -z-10" />
+      <div aria-hidden className="absolute -inset-6 bg-gradient-to-br from-brand-500/35 via-amber-500/20 to-brand-600/30 rounded-[2rem] blur-3xl -z-10" />
       <div className="relative bg-white/80 backdrop-blur border border-slate-200 rounded-3xl shadow-2xl p-6 overflow-hidden">
         {/* Car SVG */}
         <svg viewBox="0 0 260 110" className="w-full">
@@ -427,7 +427,7 @@ function HeroVisual() {
 function DashboardPreview() {
   return (
     <div className="mt-20 relative">
-      <div aria-hidden className="absolute -inset-6 bg-gradient-to-br from-brand-500/25 via-indigo-500/20 to-purple-500/25 rounded-[2.5rem] blur-3xl" />
+      <div aria-hidden className="absolute -inset-6 bg-gradient-to-br from-brand-500/30 via-amber-500/20 to-brand-600/25 rounded-[2.5rem] blur-3xl" />
       <div className="relative bg-gradient-to-br from-slate-900 to-slate-800 rounded-3xl p-3 shadow-2xl ring-1 ring-white/10">
         <div className="rounded-2xl bg-white overflow-hidden">
           {/* Browser chrome */}
@@ -444,7 +444,7 @@ function DashboardPreview() {
             {/* Sidebar */}
             <aside className="col-span-1 bg-gradient-to-b from-slate-50 to-white rounded-xl p-3 border border-slate-100 space-y-1">
               <div className="flex items-center gap-2 mb-3 pb-2 border-b border-slate-100">
-                <span className="w-7 h-7 rounded-lg bg-gradient-to-br from-brand-500 to-indigo-600 text-white grid place-items-center">
+                <span className="w-7 h-7 rounded-lg bg-gradient-to-br from-brand-500 to-brand-700 text-white grid place-items-center">
                   <Wrench size={14} />
                 </span>
                 <span className="font-bold text-slate-900 text-sm">Fixora</span>
@@ -469,7 +469,7 @@ function DashboardPreview() {
             <div className="col-span-4 space-y-3">
               {/* Metric tiles */}
               <div className="grid grid-cols-3 gap-3">
-                <Metric label="Open ROs"          value="14"      tint="from-brand-500 to-indigo-600"    Icon={Wrench} />
+                <Metric label="Open ROs"          value="14"      tint="from-brand-500 to-brand-700"    Icon={Wrench} />
                 <Metric label="Awaiting approval" value="3"        tint="from-amber-500 to-orange-600"    Icon={ClipboardCheck} />
                 <Metric label="Today's revenue"   value="$2,840"   tint="from-emerald-500 to-teal-600"    Icon={CreditCard} />
               </div>
@@ -522,9 +522,9 @@ function Metric({ label, value, tint, Icon }) {
 
 /* ─────────────────── Data ─────────────────── */
 const features = [
-  { icon: FileText,       tint: 'from-blue-500 to-indigo-600',   title: 'Estimates & repair orders', body: 'Build an estimate in minutes with labor, parts, fees, discounts, taxes — then convert to a repair order in one click.' },
+  { icon: FileText,       tint: 'from-brand-500 to-brand-700',   title: 'Estimates & repair orders', body: 'Build an estimate in minutes with labor, parts, fees, discounts, taxes — then convert to a repair order in one click.' },
   { icon: ClipboardCheck, tint: 'from-emerald-500 to-teal-600',  title: 'Digital vehicle inspections', body: 'Pass / fail / service-soon with photos. Customers see them on a share link and approve items one by one.' },
-  { icon: Smartphone,     tint: 'from-indigo-500 to-purple-600', title: 'Technician mobile submit',    body: 'Issue a secure token link to your tech\'s phone. They fill inspection items with photos. No pricing exposed.' },
+  { icon: Smartphone,     tint: 'from-amber-500 to-brand-600', title: 'Technician mobile submit',    body: 'Issue a secure token link to your tech\'s phone. They fill inspection items with photos. No pricing exposed.' },
   { icon: Users,          tint: 'from-sky-500 to-blue-600',      title: 'Customer approvals',          body: 'Online authorization via share link. Approve, decline, or request changes — with reminder emails on autopilot.' },
   { icon: CreditCard,     tint: 'from-emerald-500 to-green-600', title: 'Online payments',             body: 'Send a Stripe Checkout link. Payment posts to the document and emails a receipt automatically.' },
   { icon: ShieldCheck,    tint: 'from-rose-500 to-red-600',      title: 'Tenant isolation + MFA',      body: 'Every shop\'s data is scoped per company on every endpoint. Argon2id passwords. Optional two-factor on login.' },
@@ -532,9 +532,9 @@ const features = [
 
 const workflow = [
   { title: 'Customer calls',    body: 'Capture the customer + vehicle. One keystroke to open an estimate.',       Icon: Users,          tint: 'from-sky-500 to-blue-600' },
-  { title: 'Estimate',          body: 'Add labor, parts, inspections. Share link for customer review.',           Icon: FileText,       tint: 'from-indigo-500 to-brand-600' },
+  { title: 'Estimate',          body: 'Add labor, parts, inspections. Share link for customer review.',           Icon: FileText,       tint: 'from-brand-500 to-brand-700' },
   { title: 'Authorization',     body: 'Customer approves online or in-shop. Items roll into the repair order.',   Icon: ClipboardCheck, tint: 'from-emerald-500 to-teal-600' },
-  { title: 'Repair order',      body: 'Tech submits inspection + updates. Shop sees progress in real time.',      Icon: Wrench,         tint: 'from-purple-500 to-indigo-600' },
+  { title: 'Repair order',      body: 'Tech submits inspection + updates. Shop sees progress in real time.',      Icon: Wrench,         tint: 'from-amber-500 to-brand-600' },
   { title: 'Invoice & payment', body: 'Convert to invoice, email the Stripe link, mark paid automatically.',      Icon: Receipt,        tint: 'from-amber-500 to-orange-600' },
 ]
 
@@ -642,7 +642,7 @@ function AnimStyles() {
 }
 
 const testimonials = [
-  { name: 'Marco D.',   role: 'Owner, 3-bay independent shop', tint: 'from-brand-500 to-indigo-600',   quote: 'It replaced three tools we juggled — our estimates app, a PDF inspection generator, and a text-reminder service. Techs picked it up in a day.' },
+  { name: 'Marco D.',   role: 'Owner, 3-bay independent shop', tint: 'from-brand-500 to-brand-700',   quote: 'It replaced three tools we juggled — our estimates app, a PDF inspection generator, and a text-reminder service. Techs picked it up in a day.' },
   { name: 'Jaylen K.',  role: 'Service manager, European specialist',   tint: 'from-emerald-500 to-teal-600',   quote: 'Online approvals are a game-changer. Customers approve work from the parking lot — we skipped a whole round of phone tag.' },
   { name: 'Amelia R.',  role: 'Owner, high-volume collision shop',       tint: 'from-amber-500 to-orange-600',   quote: 'Reports actually tell me which services are profitable. I rebalanced my pricing in the first month and margins went up.' },
   { name: 'Kavi P.',    role: 'Lead technician, family-owned garage',     tint: 'from-pink-500 to-rose-600',      quote: 'Mobile inspection submit saved me from running back to the service writer every 10 minutes. Photos go straight to the customer.' },

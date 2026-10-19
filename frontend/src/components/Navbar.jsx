@@ -16,21 +16,21 @@ const nav = [
 export default function Navbar() {
   const [open, setOpen] = useState(false)
   return (
-    <header className="sticky top-0 z-40 bg-white/80 backdrop-blur border-b border-slate-200">
+    <header className="sticky top-0 z-40 bg-white/85 backdrop-blur border-b border-slate-200 shadow-sm">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center h-16 gap-6">
-        <Link to="/" aria-label="Fixora home">
-          <Logo size={36} />
+        <Link to="/" aria-label="Fixora home" className="flex items-center">
+          <Logo height={38} />
         </Link>
         <div className="hidden md:flex items-center gap-1 ml-6">
           {nav.map((n) => (
             <NavLink key={n.to} to={n.to}
-              className={({ isActive }) => `px-3 py-2 rounded-md text-sm ${isActive ? 'text-brand-700 font-semibold' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'}`}>
+              className={({ isActive }) => `px-3 py-2 rounded-md text-sm font-medium transition ${isActive ? 'text-brand-600 font-semibold' : 'text-slate-600 hover:text-slate-900 hover:bg-slate-50'}`}>
               {n.label}
             </NavLink>
           ))}
         </div>
         <div className="ml-auto hidden md:flex items-center gap-3">
-          <a href={APP_ORIGIN} className="text-sm text-slate-600 hover:text-slate-900">Sign in</a>
+          <a href={APP_ORIGIN} className="text-sm text-slate-600 hover:text-slate-900 font-medium">Sign in</a>
           <a href={`${APP_ORIGIN}/signup`} className="btn-primary">Start free trial</a>
         </div>
         <button className="md:hidden ml-auto" onClick={() => setOpen((v) => !v)} aria-label="Menu">
@@ -52,8 +52,21 @@ export default function Navbar() {
         </div>
       )}
       <style>{`
-        .btn-primary { background: linear-gradient(90deg,#3c6dff,#2554f5); color:#fff; padding: 0.5rem 0.9rem; border-radius: 0.5rem; font-size: 0.875rem; font-weight: 600; transition: filter .15s; }
-        .btn-primary:hover { filter: brightness(1.1); }
+        .btn-primary {
+          background: linear-gradient(90deg,#f97316,#ea580c);
+          color: #fff;
+          padding: 0.5rem 1rem;
+          border-radius: 0.6rem;
+          font-size: 0.875rem;
+          font-weight: 700;
+          box-shadow: 0 6px 18px -4px rgba(249,115,22,.45);
+          transition: filter .15s, transform .15s, box-shadow .15s;
+        }
+        .btn-primary:hover {
+          filter: brightness(1.08);
+          transform: translateY(-1px);
+          box-shadow: 0 10px 22px -4px rgba(249,115,22,.55);
+        }
       `}</style>
     </header>
   )

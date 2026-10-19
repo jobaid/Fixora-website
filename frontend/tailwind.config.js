@@ -4,17 +4,28 @@ export default {
   theme: {
     extend: {
       colors: {
+        // Fixora brand palette — orange, matched to the logo accent.
         brand: {
-          50:  '#eef5ff',
-          100: '#d9e8ff',
-          200: '#b8d2ff',
-          300: '#8bb4ff',
-          400: '#5e8dff',
-          500: '#3c6dff',
-          600: '#2554f5',
-          700: '#1d41d9',
-          800: '#1e36ad',
-          900: '#1e3285',
+          50:  '#fff4ec',
+          100: '#ffe4d1',
+          200: '#ffc5a1',
+          300: '#ffa06a',
+          400: '#ff7f3d',
+          500: '#f97316', // primary orange (logo accent)
+          600: '#ea580c',
+          700: '#c2410c',
+          800: '#9a3412',
+          900: '#7c2d12',
+        },
+        // Deep ink used alongside the brand orange.
+        ink: {
+          50:  '#f6f7f9',
+          100: '#eceef2',
+          500: '#334155',
+          700: '#1e293b',
+          800: '#111827',
+          900: '#0a0f1a',
+          950: '#05080f',
         },
       },
       fontFamily: {

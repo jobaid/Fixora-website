@@ -13,11 +13,11 @@ const groups = [
     tagline: 'Run every bay from one screen.',
     description: 'The daily cockpit of your shop — from the moment a customer calls to the keys handed back.',
     illustration: 'operations',
-    accent: 'from-brand-500 to-indigo-600',
+    accent: 'from-brand-500 to-brand-700',
     items: [
-      { icon: FileText,       tint: 'from-blue-500 to-indigo-600',    title: 'Estimates, repair orders, invoices', body: 'One editor for all three doc types. Convert between them in a click. Labor, parts, fees, discounts, taxes calculate live.' },
+      { icon: FileText,       tint: 'from-brand-500 to-brand-700',    title: 'Estimates, repair orders, invoices', body: 'One editor for all three doc types. Convert between them in a click. Labor, parts, fees, discounts, taxes calculate live.' },
       { icon: ClipboardCheck, tint: 'from-emerald-500 to-teal-600',   title: 'Digital vehicle inspections (DVI)',  body: 'Build your own templates. Pass / fail / service-soon per item with photos. Share with customer or print.' },
-      { icon: Smartphone,     tint: 'from-indigo-500 to-purple-600',  title: 'Technician mobile submit',           body: 'Mint a secure link, tech fills inspection on their phone. No pricing exposed. Submit lands straight in the shop UI.' },
+      { icon: Smartphone,     tint: 'from-amber-500 to-brand-600',  title: 'Technician mobile submit',           body: 'Mint a secure link, tech fills inspection on their phone. No pricing exposed. Submit lands straight in the shop UI.' },
       { icon: Users,          tint: 'from-sky-500 to-blue-600',       title: 'Customers & vehicles',               body: 'Full history per customer and per VIN. Multiple vehicles per customer. Mileage tracking.' },
     ],
   },
@@ -41,9 +41,9 @@ const groups = [
     illustration: 'admin',
     accent: 'from-amber-500 to-orange-600',
     items: [
-      { icon: BarChart3, tint: 'from-violet-500 to-indigo-600',  title: 'Reports',             body: 'Parts profit, payments, tax, technician productivity. Export CSV. Daily / weekly / monthly rollups.' },
+      { icon: BarChart3, tint: 'from-amber-500 to-brand-600',  title: 'Reports',             body: 'Parts profit, payments, tax, technician productivity. Export CSV. Daily / weekly / monthly rollups.' },
       { icon: Package,   tint: 'from-amber-500 to-orange-600',   title: 'Add-ons marketplace', body: 'Enable features à la carte. 7-day free trial on each. Change plan or cancel from inside the shop.' },
-      { icon: Database,  tint: 'from-indigo-600 to-blue-700',    title: 'Backup & restore',    body: 'Weekly automated backups. One-click manual snapshots. Restore from any point.' },
+      { icon: Database,  tint: 'from-brand-600 to-brand-800',    title: 'Backup & restore',    body: 'Weekly automated backups. One-click manual snapshots. Restore from any point.' },
       { icon: History,   tint: 'from-slate-600 to-slate-800',    title: 'Audit log',           body: 'Every settings change and sensitive action is logged with who / when / what. Immutable from the UI.' },
     ],
   },
@@ -54,7 +54,7 @@ export default function Features() {
     <div className="relative overflow-hidden">
       {/* Backdrop */}
       <div aria-hidden className="absolute inset-x-0 top-0 h-[520px] -z-10"
-        style={{ background: 'radial-gradient(ellipse at 50% -20%, rgba(60,109,255,0.22), transparent 60%), linear-gradient(180deg,#f6faff,#ffffff)' }} />
+        style={{ background: 'radial-gradient(ellipse at 50% -20%, rgba(249,115,22,0.22), transparent 60%), linear-gradient(180deg,#f6faff,#ffffff)' }} />
       <div aria-hidden className="absolute inset-x-0 top-0 h-[520px] -z-10 opacity-[0.35]"
         style={{ backgroundImage: 'radial-gradient(#cbd5e1 1px, transparent 1px)', backgroundSize: '22px 22px', maskImage: 'linear-gradient(180deg, black, transparent 70%)' }} />
 
@@ -65,14 +65,14 @@ export default function Features() {
             <Sparkles size={12} /> Everything an independent shop needs
           </span>
           <h1 className="mt-5 text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.05]">
-            Features that <span className="bg-gradient-to-r from-brand-600 via-indigo-600 to-purple-600 bg-clip-text text-transparent">move the needle.</span>
+            Features that <span className="bg-gradient-to-r from-brand-500 via-brand-600 to-amber-500 bg-clip-text text-transparent">move the needle.</span>
           </h1>
           <p className="mt-5 text-lg text-slate-600 leading-relaxed">
             Twelve tightly-integrated tools covering the whole repair lifecycle — the first-call to the paid invoice —
             without the bloat of enterprise suites.
           </p>
           <div className="mt-7 flex flex-wrap justify-center gap-3">
-            <a href={`${APP_ORIGIN}/signup`} className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-500 to-indigo-600 text-white font-semibold shadow-lg hover:brightness-110">
+            <a href={`${APP_ORIGIN}/signup`} className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-500 to-brand-700 text-white font-semibold shadow-lg hover:brightness-110">
               Start free trial <ArrowRight size={16} />
             </a>
             <Link to="/pricing" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-slate-800 border border-slate-200 font-semibold hover:border-slate-300">
@@ -87,7 +87,7 @@ export default function Features() {
             { k: '12+',   v: 'Core features',       Icon: Zap,         tint: 'from-amber-500 to-orange-500' },
             { k: '< 5m',  v: 'Setup time',          Icon: Wrench,      tint: 'from-sky-500 to-blue-600' },
             { k: '99.9%', v: 'Uptime target',       Icon: ShieldCheck, tint: 'from-emerald-500 to-teal-600' },
-            { k: '7 days', v: 'Free trial, no card', Icon: CheckCircle2, tint: 'from-indigo-500 to-purple-600' },
+            { k: '7 days', v: 'Free trial, no card', Icon: CheckCircle2, tint: 'from-amber-500 to-brand-600' },
           ].map((s) => (
             <div key={s.v} className="relative flex items-center gap-3 p-4 bg-white/80 backdrop-blur rounded-2xl border border-slate-200 shadow-sm hover:shadow-md transition">
               <span className={`w-11 h-11 rounded-xl bg-gradient-to-br ${s.tint} text-white grid place-items-center shadow`}>
@@ -150,7 +150,7 @@ export default function Features() {
         {/* Workflow strip */}
         <section>
           <div className="text-center max-w-2xl mx-auto">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-full bg-indigo-50 text-indigo-700 border border-indigo-100">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-full bg-amber-50 text-amber-700 border border-amber-100">
               <TrendingUp size={12} /> How it fits together
             </div>
             <h2 className="mt-4 text-3xl font-bold text-slate-900">From first call to paid invoice</h2>
@@ -158,13 +158,13 @@ export default function Features() {
           </div>
 
           <div className="mt-10 relative">
-            <div aria-hidden className="hidden md:block absolute left-0 right-0 top-10 h-0.5 bg-gradient-to-r from-brand-200 via-indigo-200 to-amber-200" />
+            <div aria-hidden className="hidden md:block absolute left-0 right-0 top-10 h-0.5 bg-gradient-to-r from-brand-200 via-amber-300 to-amber-200" />
             <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
               {[
                 { Icon: Users,          tint: 'from-sky-500 to-blue-600',       title: 'Customer in' },
-                { Icon: FileText,       tint: 'from-indigo-500 to-brand-600',   title: 'Estimate' },
+                { Icon: FileText,       tint: 'from-brand-500 to-brand-700',   title: 'Estimate' },
                 { Icon: ClipboardCheck, tint: 'from-emerald-500 to-teal-600',   title: 'Inspection' },
-                { Icon: Wrench,         tint: 'from-purple-500 to-indigo-600',  title: 'Repair order' },
+                { Icon: Wrench,         tint: 'from-amber-500 to-brand-600',  title: 'Repair order' },
                 { Icon: Receipt,        tint: 'from-amber-500 to-orange-600',   title: 'Invoice paid' },
               ].map((s, i) => (
                 <div key={s.title} className="relative flex flex-col items-center text-center bg-white border border-slate-200 rounded-2xl p-4 pt-6 shadow-sm hover:shadow-md transition">
@@ -180,9 +180,9 @@ export default function Features() {
         </section>
 
         {/* Quote / testimonial */}
-        <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900 to-indigo-900 p-8 sm:p-12">
+        <section className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 p-8 sm:p-12">
           <div aria-hidden className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-brand-500/20 blur-3xl" />
-          <div aria-hidden className="absolute -bottom-24 -left-10 w-80 h-80 rounded-full bg-indigo-500/20 blur-3xl" />
+          <div aria-hidden className="absolute -bottom-24 -left-10 w-80 h-80 rounded-full bg-amber-500/20 blur-3xl" />
           <div className="relative max-w-3xl mx-auto text-center">
             <div className="text-5xl text-brand-400 leading-none font-serif">"</div>
             <blockquote className="mt-2 text-xl sm:text-2xl text-white font-medium leading-snug">
@@ -190,7 +190,7 @@ export default function Features() {
               Our techs picked it up in a day.
             </blockquote>
             <div className="mt-6 flex items-center justify-center gap-3 text-sm text-slate-300">
-              <span className="w-10 h-10 rounded-full bg-gradient-to-br from-brand-500 to-indigo-600 grid place-items-center text-white font-bold">M</span>
+              <span className="w-10 h-10 rounded-full bg-gradient-to-br from-brand-500 to-brand-700 grid place-items-center text-white font-bold">M</span>
               <div className="text-left">
                 <div className="font-semibold text-white">Marco D.</div>
                 <div className="text-xs text-slate-400">Owner, 3-bay independent shop</div>
@@ -204,7 +204,7 @@ export default function Features() {
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900">Ready to see it in your shop?</h2>
           <p className="mt-3 text-slate-600 max-w-xl mx-auto">7-day free trial. No credit card. Setup takes under 5 minutes.</p>
           <div className="mt-7 flex justify-center gap-3 flex-wrap">
-            <a href={`${APP_ORIGIN}/signup`} className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-brand-500 to-indigo-600 text-white font-semibold shadow-lg hover:brightness-110">
+            <a href={`${APP_ORIGIN}/signup`} className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-brand-500 to-brand-700 text-white font-semibold shadow-lg hover:brightness-110">
               Start free trial <ArrowRight size={16} />
             </a>
             <Link to="/contact" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white text-slate-800 border border-slate-200 font-semibold hover:border-slate-300">
@@ -333,7 +333,7 @@ function Illustration({ kind, accent }) {
         <div className="grid grid-cols-3 gap-2">
           {[
             { k: '$12.4k', l: 'Revenue', c: 'from-emerald-500 to-teal-600' },
-            { k: '38',     l: 'ROs closed', c: 'from-brand-500 to-indigo-600' },
+            { k: '38',     l: 'ROs closed', c: 'from-brand-500 to-brand-700' },
             { k: '94%',    l: 'Approval rate', c: 'from-amber-500 to-orange-600' },
           ].map((m) => (
             <div key={m.l} className="bg-slate-50 rounded-xl p-2">
