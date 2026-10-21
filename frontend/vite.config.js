@@ -3,9 +3,11 @@ import react from '@vitejs/plugin-react'
 
 // Dev runs at http://localhost:5174/ (clean root).
 // Production build serves under /marketing/ on apps.2set.com.
+// Default base is '/'. Override with VITE_BASE at build time if the site must
+// be served under a sub-path (e.g. VITE_BASE=/marketing/ for apps.2set.com).
 export default defineConfig(({ command }) => ({
   plugins: [react()],
-  base: command === 'build' ? '/marketing/' : '/',
+  base: process.env.VITE_BASE || '/',
   server: {
     port: 5174,
     proxy: {
