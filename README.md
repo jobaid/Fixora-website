@@ -5,7 +5,7 @@ Fixora app repo. Connects via public HTTP and (later) authenticated
 server-to-server API.
 
 - Marketing website — www.2set.com (recommended)
-- Main app — https://apps.2set.com (unchanged)
+- Main app — https://www.fixoraerp.com (unchanged)
 
 ## Stack
 
@@ -53,7 +53,7 @@ Then run the server with the SPA path set:
 
 ```bash
 STATIC_DIR=/opt/fixora-marketing/frontend/dist \
-APP_ORIGIN=https://apps.2set.com \
+APP_ORIGIN=https://www.fixoraerp.com \
 ./fixora-marketing-server --addr=:8090
 ```
 
@@ -103,7 +103,7 @@ Type=simple
 User=fixora
 WorkingDirectory=/opt/fixora-marketing/backend
 Environment=STATIC_DIR=/opt/fixora-marketing/frontend/dist
-Environment=APP_ORIGIN=https://apps.2set.com
+Environment=APP_ORIGIN=https://www.fixoraerp.com
 Environment=ADDR=:8090
 ExecStart=/opt/fixora-marketing/backend/fixora-marketing-server
 Restart=always

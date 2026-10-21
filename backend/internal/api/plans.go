@@ -12,7 +12,7 @@ import (
 
 // Plans are the source-of-truth in the main Fixora app (signup_plans
 // table, edited at Owner → Plans). This endpoint proxies that live list and
-// decorates each row with a SignupURL that lands on apps.2set.com/signup.
+// decorates each row with a SignupURL that lands on www.fixoraerp.com/signup.
 // Cached for 60s so marketing-page traffic doesn't hammer the main app.
 
 type Plan struct {
