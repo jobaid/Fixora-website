@@ -5,7 +5,7 @@ import {
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
 
-const APP_ORIGIN = import.meta.env.VITE_APP_ORIGIN || 'https://apps.2set.com'
+const APP_ORIGIN = import.meta.env.VITE_APP_ORIGIN || 'https://www.fixoraerp.com'
 
 const groups = [
   {

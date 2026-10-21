@@ -8,7 +8,7 @@ import {
 } from 'lucide-react'
 import { api } from '../lib/api'
 
-const APP_ORIGIN = import.meta.env.VITE_APP_ORIGIN || 'https://apps.2set.com'
+const APP_ORIGIN = import.meta.env.VITE_APP_ORIGIN || 'https://www.fixoraerp.com'
 
 // Visual identity per plan — picked by the plan key or name.
 const PLAN_THEMES = {

@@ -8,7 +8,7 @@ import (
 )
 
 func TestPublicPlansRoute(t *testing.T) {
-	t.Setenv("APP_ORIGIN", "https://apps.2set.com")
+	t.Setenv("APP_ORIGIN", "https://www.fixoraerp.com")
 
 	mux := http.NewServeMux()
 	New().Routes(mux)
@@ -31,7 +31,7 @@ func TestPublicPlansRoute(t *testing.T) {
 	if plans[0].Key != "starter" || plans[1].Key != "professional" || plans[2].Key != "business" {
 		t.Fatalf("unexpected plan keys: got %q, %q, %q", plans[0].Key, plans[1].Key, plans[2].Key)
 	}
-	if plans[0].SignupURL != "https://apps.2set.com/signup?plan=starter" {
-		t.Fatalf("starter signup URL = %q, want %q", plans[0].SignupURL, "https://apps.2set.com/signup?plan=starter")
+	if plans[0].SignupURL != "https://www.fixoraerp.com/signup?plan=starter" {
+		t.Fatalf("starter signup URL = %q, want %q", plans[0].SignupURL, "https://www.fixoraerp.com/signup?plan=starter")
 	}
 }

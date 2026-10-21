@@ -36,7 +36,7 @@ var plansCache struct {
 func (s *Server) listPlans(w http.ResponseWriter, r *http.Request) {
 	appOrigin := strings.TrimRight(os.Getenv("APP_ORIGIN"), "/")
 	if appOrigin == "" {
-		appOrigin = "https://apps.2set.com"
+		appOrigin = "https://www.fixoraerp.com"
 	}
 
 	plansCache.Lock()

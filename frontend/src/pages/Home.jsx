@@ -6,7 +6,7 @@ import {
   CheckCircle2, Clock, TrendingUp, Mail, Receipt, Car, Camera,
 } from 'lucide-react'
 
-const APP_ORIGIN = import.meta.env.VITE_APP_ORIGIN || 'https://apps.2set.com'
+const APP_ORIGIN = import.meta.env.VITE_APP_ORIGIN || 'https://www.fixoraerp.com'
 
 /* Reveal — fades + slides a child in when it scrolls into view. */
 function Reveal({ children, delay = 0, as: Tag = 'div', className = '' }) {
@@ -436,7 +436,7 @@ function DashboardPreview() {
             <span className="w-3 h-3 rounded-full bg-yellow-400"></span>
             <span className="w-3 h-3 rounded-full bg-green-400"></span>
             <div className="mx-auto px-3 py-1 rounded-lg bg-white border border-slate-200 text-xs text-slate-500 font-mono">
-              apps.2set.com / shop
+              fixoraerp.com / shop
             </div>
           </div>
 
