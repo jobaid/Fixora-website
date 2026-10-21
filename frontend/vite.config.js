@@ -1,9 +1,11 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-export default defineConfig({
+// Dev runs at http://localhost:5174/ (clean root).
+// Production build serves under /marketing/ on apps.2set.com.
+export default defineConfig(({ command }) => ({
   plugins: [react()],
-  base: '/marketing/',
+  base: command === 'build' ? '/marketing/' : '/',
   server: {
     port: 5174,
     proxy: {
@@ -11,4 +13,4 @@ export default defineConfig({
     },
   },
   build: { outDir: 'dist' },
-})
+}))
