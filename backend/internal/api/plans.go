@@ -1,19 +1,15 @@
 package api
 
 import (
-	"encoding/json"
-	"io"
 	"net/http"
 	"os"
 	"strings"
-	"sync"
-	"time"
 )
 
-// Plans are the source-of-truth in the main Fixora app (signup_plans
-// table, edited at Owner → Plans). This endpoint proxies that live list and
-// decorates each row with a SignupURL that lands on www.fixoraerp.com/signup.
-// Cached for 60s so marketing-page traffic doesn't hammer the main app.
+// Plans served by the marketing site. Hard-coded so the Pricing page always
+// renders regardless of any upstream app; edit the slice below to change prices
+// or feature lists. Each row's SignupURL is stamped from APP_ORIGIN at request
+// time so changing the deployment target doesn't require a rebuild.
 
 type Plan struct {
 	Key          string   `json:"key"`
@@ -27,52 +23,57 @@ type Plan struct {
 	SignupURL    string   `json:"signupUrl"`
 }
 
-var plansCache struct {
-	sync.Mutex
-	at   time.Time
-	body []Plan
+var builtinPlans = []Plan{
+	{
+		Key: "starter", Name: "Starter",
+		Tagline:      "For a solo tech or a brand-new shop finding its feet.",
+		MonthlyPrice: 29, AnnualPrice: 278, TrialDays: 7,
+		Features: []string{
+			"Unlimited estimates & repair orders",
+			"Digital vehicle inspections with photos",
+			"Customer approvals via share link",
+			"Email receipts & invoice PDFs",
+			"1 user included",
+		},
+	},
+	{
+		Key: "professional", Name: "Professional",
+		Tagline:      "The daily driver for independent shops with a few bays.",
+		MonthlyPrice: 79, AnnualPrice: 758, TrialDays: 7,
+		Highlighted: true,
+		Features: []string{
+			"Everything in Starter",
+			"Online payments via Stripe",
+			"Technician mobile submit (secure link)",
+			"Customer chat per repair order",
+			"Reports: parts profit, tech productivity, tax",
+			"Up to 5 users",
+		},
+	},
+	{
+		Key: "business", Name: "Business",
+		Tagline:      "For high-volume shops and multi-bay operations.",
+		MonthlyPrice: 149, AnnualPrice: 1428, TrialDays: 7,
+		Features: []string{
+			"Everything in Professional",
+			"Priority support",
+			"API & webhook integrations",
+			"Automated backups & restore",
+			"Audit log of sensitive actions",
+			"Unlimited users",
+		},
+	},
 }
 
 func (s *Server) listPlans(w http.ResponseWriter, r *http.Request) {
 	appOrigin := strings.TrimRight(os.Getenv("APP_ORIGIN"), "/")
 	if appOrigin == "" {
-		appOrigin = "https://www.fixoraerp.com"
+		appOrigin = "https://fixoraerp.com"
 	}
-
-	plansCache.Lock()
-	fresh := time.Since(plansCache.at) < 60*time.Second && plansCache.body != nil
-	cached := plansCache.body
-	plansCache.Unlock()
-	if fresh {
-		writeJSON(w, 200, cached)
-		return
+	out := make([]Plan, len(builtinPlans))
+	copy(out, builtinPlans)
+	for i := range out {
+		out[i].SignupURL = appOrigin + "/signup?plan=" + out[i].Key
 	}
-
-	req, _ := http.NewRequestWithContext(r.Context(), "GET", appOrigin+"/api/public/signup/plans", nil)
-	resp, err := (&http.Client{Timeout: 8 * time.Second}).Do(req)
-	if err != nil || resp.StatusCode >= 300 {
-		if cached != nil {
-			writeJSON(w, 200, cached) // serve stale on upstream hiccup
-			return
-		}
-		writeErr(w, 502, "could not reach plans upstream")
-		if resp != nil {
-			resp.Body.Close()
-		}
-		return
-	}
-	defer resp.Body.Close()
-	body, _ := io.ReadAll(io.LimitReader(resp.Body, 1<<20))
-	var upstream []Plan
-	if err := json.Unmarshal(body, &upstream); err != nil {
-		writeErr(w, 502, "could not parse plans upstream")
-		return
-	}
-	for i := range upstream {
-		upstream[i].SignupURL = appOrigin + "/signup?plan=" + upstream[i].Key
-	}
-	plansCache.Lock()
-	plansCache.at, plansCache.body = time.Now(), upstream
-	plansCache.Unlock()
-	writeJSON(w, 200, upstream)
+	writeJSON(w, 200, out)
 }

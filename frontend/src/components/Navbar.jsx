@@ -3,7 +3,7 @@ import { Link, NavLink } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import Logo from './Logo'
 
-const APP_ORIGIN = import.meta.env.VITE_APP_ORIGIN || 'https://www.fixoraerp.com'
+const APP_ORIGIN = import.meta.env.VITE_APP_ORIGIN || 'https://fixoraerp.com'
 
 const nav = [
   { to: '/features', label: 'Features' },

@@ -6,7 +6,7 @@ import {
   CheckCircle2, Clock, TrendingUp, Mail, Receipt, Car, Camera,
 } from 'lucide-react'
 
-const APP_ORIGIN = import.meta.env.VITE_APP_ORIGIN || 'https://www.fixoraerp.com'
+const APP_ORIGIN = import.meta.env.VITE_APP_ORIGIN || 'https://fixoraerp.com'
 
 /* Reveal — fades + slides a child in when it scrolls into view. */
 function Reveal({ children, delay = 0, as: Tag = 'div', className = '' }) {
