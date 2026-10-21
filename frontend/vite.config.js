@@ -9,7 +9,16 @@ export default defineConfig(({ command }) => ({
   server: {
     port: 5174,
     proxy: {
-      '/api': 'http://localhost:8082',
+      // Dev proxies /api → the deployed Fixora backend behind nginx.
+      // nginx routes /marketing/api/* to the Go service on 127.0.0.1:8082.
+      // Set VITE_API_TARGET=http://localhost:8082 locally (no /marketing)
+      // if you prefer running the Go backend directly.
+      '/api': {
+        target: process.env.VITE_API_TARGET || 'https://apps.2set.com',
+        changeOrigin: true,
+        secure: true,
+        rewrite: (p) => (process.env.VITE_API_TARGET ? p : '/marketing' + p),
+      },
     },
   },
   build: { outDir: 'dist' },
