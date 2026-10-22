@@ -134,7 +134,7 @@ export default function Pricing() {
             </span>
           </h1>
           <p className="mt-5 text-lg text-slate-600 leading-relaxed">
-            Full feature access during your <strong className="text-slate-900">7-day free trial</strong>.
+            Full feature access during your <strong className="text-slate-900">30-days free trial</strong>.
             Your card will be charged after the trial ends. Cancel any time, right from Settings.
           </p>
 
