@@ -20,7 +20,7 @@ import (
 //
 // Env vars:
 //   PLANS_UPSTREAM — full URL that returns the plans JSON array.
-//                    Default: https://my.fixoraerp.com/api/public/signup/plans
+//                    Default: https://my.fixoraerp.com/portal/admin/plans
 //   APP_ORIGIN     — public domain used to build each plan's signup link.
 //                    Default: https://fixoraerp.com
 
@@ -91,7 +91,7 @@ func (s *Server) listPlans(w http.ResponseWriter, r *http.Request) {
 	}
 	upstream := strings.TrimSpace(os.Getenv("PLANS_UPSTREAM"))
 	if upstream == "" {
-		upstream = "https://my.fixoraerp.com/api/public/signup/plans"
+		upstream = "https://my.fixoraerp.com/portal/admin/plans"
 	}
 
 	// Serve from cache if fresh.
