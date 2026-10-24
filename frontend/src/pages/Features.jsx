@@ -11,7 +11,7 @@ const groups = [
   {
     title: 'Shop operations',
     tagline: 'Run every bay from one screen.',
-    description: 'The daily cockpit of your shop — from the moment a customer calls to the keys handed back.',
+    description: 'The daily cockpit of your shop from the moment a customer calls to the keys handed back.',
     illustration: 'operations',
     accent: 'from-brand-500 to-brand-700',
     items: [
@@ -23,8 +23,8 @@ const groups = [
   },
   {
     title: 'Customer experience',
-    tagline: 'Keep every customer in the loop — automatically.',
-    description: 'Online approvals, chat, payment and email — all branded with your shop\'s identity.',
+    tagline: 'Keep every customer in the loop automatically.',
+    description: 'Online approvals, chat, payment and email all branded with your shop\'s identity.',
     illustration: 'customer',
     accent: 'from-pink-500 to-rose-600',
     items: [
@@ -37,12 +37,12 @@ const groups = [
   {
     title: 'Admin & reporting',
     tagline: 'Numbers that actually run your business.',
-    description: 'KPIs, backups and auditing — the quiet systems that keep a shop safe and growing.',
+    description: 'KPIs, backups and auditing the quiet systems that keep a shop safe and growing.',
     illustration: 'admin',
     accent: 'from-amber-500 to-orange-600',
     items: [
       { icon: BarChart3, tint: 'from-amber-500 to-brand-600',  title: 'Reports',             body: 'Parts profit, payments, tax, technician productivity. Export CSV. Daily / weekly / monthly rollups.' },
-      { icon: Package,   tint: 'from-amber-500 to-orange-600',   title: 'Add-ons marketplace', body: 'Enable features à la carte. 7-day free trial on each. Change plan or cancel from inside the shop.' },
+      { icon: Package,   tint: 'from-amber-500 to-orange-600',   title: 'Add-ons marketplace', body: 'Enable features à la carte. 30-day free trial on each. Change plan or cancel from inside the shop.' },
       { icon: Database,  tint: 'from-brand-600 to-brand-800',    title: 'Backup & restore',    body: 'Weekly automated backups. One-click manual snapshots. Restore from any point.' },
       { icon: History,   tint: 'from-slate-600 to-slate-800',    title: 'Audit log',           body: 'Every settings change and sensitive action is logged with who / when / what. Immutable from the UI.' },
     ],
@@ -68,7 +68,7 @@ export default function Features() {
             Features that <span className="bg-gradient-to-r from-brand-500 via-brand-600 to-amber-500 bg-clip-text text-transparent">move the needle.</span>
           </h1>
           <p className="mt-5 text-lg text-slate-600 leading-relaxed">
-            Twelve tightly-integrated tools covering the whole repair lifecycle — the first-call to the paid invoice —
+            Twelve tightly-integrated tools covering the whole repair lifecycle the first-call to the paid invoice —
             without the bloat of enterprise suites.
           </p>
           <div className="mt-7 flex flex-wrap justify-center gap-3">
@@ -154,7 +154,7 @@ export default function Features() {
               <TrendingUp size={12} /> How it fits together
             </div>
             <h2 className="mt-4 text-3xl font-bold text-slate-900">From first call to paid invoice</h2>
-            <p className="mt-3 text-slate-600">Each step is linked — update one place and everything downstream follows.</p>
+            <p className="mt-3 text-slate-600">Each step is linked update one place and everything downstream follows.</p>
           </div>
 
           <div className="mt-10 relative">
@@ -186,7 +186,7 @@ export default function Features() {
           <div className="relative max-w-3xl mx-auto text-center">
             <div className="text-5xl text-brand-400 leading-none font-serif">"</div>
             <blockquote className="mt-2 text-xl sm:text-2xl text-white font-medium leading-snug">
-              It replaced three tools we used to juggle — our estimates app, a separate inspection PDF generator, and a text-reminder service.
+              It replaced three tools we used to juggle our estimates app, a separate inspection PDF generator, and a text-reminder service.
               Our techs picked it up in a day.
             </blockquote>
             <div className="mt-6 flex items-center justify-center gap-3 text-sm text-slate-300">
