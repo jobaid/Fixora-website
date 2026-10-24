@@ -96,7 +96,7 @@ export default function Home() {
                 , not harder.
               </h1>
               <p className="mt-6 text-lg sm:text-xl text-slate-600 max-w-2xl leading-relaxed animate-fade-up [animation-delay:240ms]">
-                Estimates, repair orders, vehicle inspections, customer approvals and invoices —
+                Estimates, repair orders, vehicle inspections, customer approvals and invoices
                 all in one connected platform, from the first phone call to the paid receipt.
               </p>
 
@@ -154,7 +154,7 @@ export default function Home() {
       <section className="border-y border-slate-200 bg-white/60 backdrop-blur">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-10">
           <div className="text-center text-xs font-bold uppercase tracking-widest text-slate-500">
-            One connected platform — replaces half a dozen tools
+            One connected platform replaces half a dozen tools
           </div>
           <div className="mt-5 grid grid-cols-3 md:grid-cols-6 gap-4 items-center text-slate-500">
             {[
@@ -242,7 +242,7 @@ export default function Home() {
             <h2 className="mt-4 text-3xl sm:text-4xl font-bold text-slate-900">
               From estimate to invoice, <span className="bg-gradient-to-r from-brand-500 to-amber-500 bg-clip-text text-transparent">one clean flow</span>.
             </h2>
-            <p className="mt-3 text-slate-600">Each step is linked — a change in one place updates everything downstream automatically.</p>
+            <p className="mt-3 text-slate-600">Each step is linked a change in one place updates everything downstream automatically.</p>
           </div>
 
           <div className="mt-14 relative">
@@ -321,7 +321,7 @@ export default function Home() {
               Ready to run your shop <span className="bg-gradient-to-r from-amber-300 via-orange-400 to-amber-200 bg-clip-text text-transparent">on autopilot</span>?
             </h2>
             <p className="mt-4 text-slate-300 max-w-2xl mx-auto">
-              Full access during your 7-day trial. No credit card. Cancel from Settings any time.
+              Full access during your 30-day trial. No credit card. Cancel from Settings any time.
             </p>
             <div className="mt-8 flex justify-center gap-3 flex-wrap">
               <a href={`${APP_ORIGIN}/signup`}
