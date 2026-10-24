@@ -68,7 +68,7 @@ export default function Features() {
             Features that <span className="bg-gradient-to-r from-brand-500 via-brand-600 to-amber-500 bg-clip-text text-transparent">move the needle.</span>
           </h1>
           <p className="mt-5 text-lg text-slate-600 leading-relaxed">
-            Twelve tightly-integrated tools covering the whole repair lifecycle the first-call to the paid invoice —
+            Twelve tightly-integrated tools covering the whole repair lifecycle the first-call to the paid invoice
             without the bloat of enterprise suites.
           </p>
           <div className="mt-7 flex flex-wrap justify-center gap-3">
