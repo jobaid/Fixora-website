@@ -117,7 +117,7 @@ export default function Home() {
               {/* Trust row */}
               <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-2 text-sm text-slate-600 animate-fade-up [animation-delay:480ms]">
                 <span className="inline-flex items-center gap-1.5"><ShieldCheck size={16} className="text-emerald-500" /> AES-GCM encrypted</span>
-                <span className="inline-flex items-center gap-1.5"><Clock size={16} className="text-amber-500 animate-tick" /> 7-day free trial</span>
+                <span className="inline-flex items-center gap-1.5"><Clock size={16} className="text-amber-500 animate-tick" /> 30-day free trial</span>
                 <span className="inline-flex items-center gap-1.5"><CreditCard size={16} className="text-brand-500" /> No card required</span>
               </div>
 
@@ -207,7 +207,7 @@ export default function Home() {
             Everything your shop runs on, in <span className="bg-gradient-to-r from-brand-500 to-amber-500 bg-clip-text text-transparent">one place</span>.
           </h2>
           <p className="mt-3 text-slate-600 leading-relaxed">
-            From the first phone call to the paid invoice — track every step without juggling paper, spreadsheets, and sticky notes.
+            From the first phone call to the paid invoice track every step without juggling paper, spreadsheets, and sticky notes.
           </p>
         </div>
         <div className="mt-14 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
