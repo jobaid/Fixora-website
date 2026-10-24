@@ -12,7 +12,7 @@ export default function Logo({ size = 36, height, className = '' }) {
       style={{ height: h }}
       className={`w-auto select-none ${className}`}
       draggable="false"
-      href= "https://www.fixoraerp.com"
+      href= "https://www.fixoraerp.com/home"
     />
   )
 }
