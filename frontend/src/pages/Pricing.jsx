@@ -125,7 +125,7 @@ export default function Pricing() {
         {/* Hero */}
         <div className="text-center max-w-2xl mx-auto">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-semibold rounded-full bg-brand-50 text-brand-700 border border-brand-100 shadow-sm">
-            <Sparkles size={12} /> Simple, honest pricing — no hidden fees
+            <Sparkles size={12} /> Simple, honest pricing no hidden fees
           </span>
           <h1 className="mt-5 text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.05]">
             Pricing built for{' '}
@@ -323,7 +323,7 @@ export default function Pricing() {
                 <div className="flex-1">
                   <div className="text-xl font-bold text-white">Running multiple shops or need SSO?</div>
                   <div className="mt-1 text-sm text-slate-300 max-w-xl">
-                    Enterprise, multi-location, custom integrations — we'll build pricing that fits.
+                    Enterprise, multi-location, custom integrations we'll build pricing that fits.
                     Typical response in under one business hour.
                   </div>
                 </div>
