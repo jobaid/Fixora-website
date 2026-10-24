@@ -27,8 +27,9 @@ export default function Footer() {
         <div>
           <div className="text-sm font-semibold text-slate-900 mb-3">Legal</div>
           <ul className="space-y-2 text-sm text-slate-600">
-            <li><Link to="/terms"   className="hover:text-slate-900">Terms of Service</Link></li>
-            <li><Link to="/privacy" className="hover:text-slate-900">Privacy Policy</Link></li>
+            <li><Link to="/terms"          className="hover:text-slate-900">Terms of Service</Link></li>
+            <li><Link to="/privacy"        className="hover:text-slate-900">Privacy Policy</Link></li>
+            <li><Link to="/payment-terms"  className="hover:text-slate-900">Payment Terms</Link></li>
           </ul>
         </div>
       </div>
