@@ -2,9 +2,12 @@ package api
 
 import (
 	"encoding/json"
+	"fmt"
 	"log"
 	"net/http"
 	"net/mail"
+	"net/smtp"
+	"os"
 	"strings"
 )
 
@@ -17,9 +20,6 @@ type contactReq struct {
 	Topic   string `json:"topic"` // "sales" | "support" | "demo" | "other"
 }
 
-// submitContact — currently logs to stdout (so journalctl captures leads)
-// and acknowledges. A later phase persists these to a leads table and / or
-// emails the SaaS owner through Fixora's platform mailer.
 func (s *Server) submitContact(w http.ResponseWriter, r *http.Request) {
 	r.Body = http.MaxBytesReader(w, r.Body, 32<<10)
 	var in contactReq
@@ -42,13 +42,62 @@ func (s *Server) submitContact(w http.ResponseWriter, r *http.Request) {
 		writeErr(w, 413, "Message is too long (max 4000 characters).")
 		return
 	}
-	// Rudimentary spam guard: ignore anything with 3+ URLs in the message
-	// since legitimate inquiries almost never need links.
 	if strings.Count(strings.ToLower(in.Message), "http") >= 3 {
 		writeErr(w, 400, "Please remove the links and try again.")
 		return
 	}
+
 	log.Printf("CONTACT [%s] %s <%s> shop=%q phone=%q: %s",
 		in.Topic, in.Name, in.Email, in.Shop, in.Phone, in.Message)
+
+	go sendContactEmail(in)
+
 	writeJSON(w, 200, map[string]any{"ok": true, "message": "Thanks! We'll get back to you within one business day."})
+}
+
+func sendContactEmail(in contactReq) {
+	host := os.Getenv("SMTP_HOST")
+	port := os.Getenv("SMTP_PORT")
+	user := os.Getenv("SMTP_USER")
+	pass := os.Getenv("SMTP_PASS")
+	to := os.Getenv("CONTACT_TO")
+	from := os.Getenv("CONTACT_FROM")
+
+	if host == "" || user == "" || pass == "" {
+		log.Println("CONTACT email skipped: SMTP_HOST / SMTP_USER / SMTP_PASS not set")
+		return
+	}
+	if port == "" {
+		port = "587"
+	}
+	if to == "" {
+		to = "info@fixoraerp.com"
+	}
+	if from == "" {
+		from = user
+	}
+
+	subject := fmt.Sprintf("[Fixora Contact] %s — %s", in.Topic, in.Name)
+	body := fmt.Sprintf(
+		"Name:    %s\nEmail:   %s\nShop:    %s\nPhone:   %s\nTopic:   %s\n\n%s\n",
+		in.Name, in.Email, in.Shop, in.Phone, in.Topic, in.Message,
+	)
+	msg := []byte(
+		"From: " + from + "\r\n" +
+			"To: " + to + "\r\n" +
+			"Reply-To: " + in.Email + "\r\n" +
+			"Subject: " + subject + "\r\n" +
+			"MIME-Version: 1.0\r\n" +
+			"Content-Type: text/plain; charset=utf-8\r\n" +
+			"\r\n" +
+			body,
+	)
+
+	auth := smtp.PlainAuth("", user, pass, host)
+	addr := host + ":" + port
+	if err := smtp.SendMail(addr, auth, from, []string{to}, msg); err != nil {
+		log.Printf("CONTACT email send failed: %v", err)
+		return
+	}
+	log.Printf("CONTACT email sent to %s from %s <%s>", to, in.Name, in.Email)
 }
