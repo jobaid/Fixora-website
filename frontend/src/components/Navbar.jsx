@@ -4,6 +4,7 @@ import { Menu, X } from 'lucide-react'
 import Logo from './Logo'
 
 const APP_ORIGIN = import.meta.env.VITE_APP_ORIGIN || 'https://fixoraerp.com'
+const SIGNIN_URL = import.meta.env.VITE_SIGNIN_URL || 'https://my.fixoraerp.com'
 
 const nav = [
   { to: '/features', label: 'Features' },
@@ -30,7 +31,7 @@ export default function Navbar() {
           ))}
         </div>
         <div className="ml-auto hidden md:flex items-center gap-3">
-          <a href={APP_ORIGIN} className="text-sm text-slate-600 hover:text-slate-900 font-medium">Sign in</a>
+          <a href={SIGNIN_URL} className="text-sm text-slate-600 hover:text-slate-900 font-medium">Sign in</a>
           <a href={`${APP_ORIGIN}/signup`} className="btn-primary">Start free trial</a>
         </div>
         <button className="md:hidden ml-auto" onClick={() => setOpen((v) => !v)} aria-label="Menu">
@@ -46,7 +47,7 @@ export default function Navbar() {
                 {n.label}
               </NavLink>
             ))}
-            <a href={APP_ORIGIN} className="px-3 py-2 rounded-md text-sm text-slate-700 hover:bg-slate-50">Sign in</a>
+            <a href={SIGNIN_URL} className="px-3 py-2 rounded-md text-sm text-slate-700 hover:bg-slate-50">Sign in</a>
             <a href={`${APP_ORIGIN}/signup`} className="btn-primary mt-2 text-center">Start free trial</a>
           </div>
         </div>
