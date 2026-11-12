@@ -4,7 +4,10 @@ import {
   ArrowRight, ShieldCheck, ClipboardCheck, CreditCard, Users, Wrench,
   FileText, Sparkles, BarChart3, CheckCircle2, Car, Receipt, Camera,
   RefreshCw, LifeBuoy, CalendarCheck, PhoneCall, Database, Rocket,
+  DollarSign, UserPlus, Infinity as InfinityIcon, Puzzle, ChevronDown,
+  Send, Check, HelpCircle,
 } from 'lucide-react'
+import { api } from '../lib/api'
 
 const APP_ORIGIN = import.meta.env.VITE_APP_ORIGIN || 'https://fixoraerp.com'
 const SIGNUP_URL = `${APP_ORIGIN}/signup`
@@ -69,12 +72,16 @@ export default function Home() {
                 <span className="inline-flex items-center gap-1.5"><LifeBuoy size={16} className="text-amber-500" /> Real onboarding support</span>
               </div>
 
-              <div className="mt-10 animate-fade-up [animation-delay:480ms]">
-                <Link to="/features"
+              <div className="mt-10 flex flex-wrap gap-4 animate-fade-up [animation-delay:480ms]">
+                <a href="#migration"
                   className="inline-flex items-center gap-2 text-sm font-semibold text-brand-700 hover:text-brand-800">
-                  See what's inside the platform
-                  <ArrowRight size={16} className="transition-transform group-hover:translate-x-1" />
-                </Link>
+                  See how switching works
+                  <ArrowRight size={16} />
+                </a>
+                <a href="#pricing"
+                  className="inline-flex items-center gap-2 text-sm font-semibold text-slate-600 hover:text-slate-900">
+                  View pricing
+                </a>
               </div>
             </div>
 
@@ -86,7 +93,7 @@ export default function Home() {
       </section>
 
       {/* ───────────── Migration Made Simple ───────────── */}
-      <section className="relative bg-white border-t border-slate-200">
+      <section id="migration" className="relative bg-white border-t border-slate-200 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-20">
           <div className="text-center max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-bold uppercase tracking-widest rounded-full bg-brand-50 text-brand-700 border border-brand-100">
@@ -119,8 +126,62 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ───────────── Transparent Pricing ───────────── */}
+      <section id="pricing" className="relative overflow-hidden bg-gradient-to-br from-slate-900 via-slate-900 to-slate-950 scroll-mt-24">
+        <div aria-hidden className="absolute -top-24 -right-24 w-96 h-96 rounded-full bg-brand-500/25 blur-3xl" />
+        <div aria-hidden className="absolute -bottom-32 -left-20 w-96 h-96 rounded-full bg-amber-500/20 blur-3xl" />
+        <div aria-hidden className="absolute inset-0 opacity-[0.1]"
+          style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 py-20">
+          <div className="text-center max-w-2xl mx-auto">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-bold uppercase tracking-widest rounded-full bg-white/10 text-white border border-white/20 backdrop-blur">
+              <DollarSign size={12} /> Transparent Pricing. No Hidden Fees.
+            </div>
+            <h2 className="mt-5 text-3xl sm:text-5xl font-extrabold text-white tracking-tight">
+              Starting at{' '}
+              <span className="bg-gradient-to-r from-amber-300 via-orange-400 to-amber-200 bg-clip-text text-transparent">
+                $150/month
+              </span>
+            </h2>
+            <p className="mt-5 text-slate-300 leading-relaxed">
+              Straightforward pricing for automotive repair shops. Get the tools you need
+              without complicated pricing or unexpected commitments.
+            </p>
+          </div>
+
+          <div className="mt-14 grid gap-5 md:grid-cols-2 lg:grid-cols-4">
+            {pricingHighlights.map((p, i) => (
+              <Reveal key={p.title} delay={i * 90}>
+                <div className="group h-full relative bg-white/5 backdrop-blur border border-white/10 rounded-2xl p-6 hover:bg-white/10 hover:border-white/20 transition-all duration-300">
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${p.tint} text-white grid place-items-center shadow-lg group-hover:scale-110 transition-transform`}>
+                    <p.Icon size={22} />
+                  </div>
+                  {p.big && (
+                    <div className="mt-5 text-3xl font-extrabold text-white tabular-nums">{p.big}</div>
+                  )}
+                  <h3 className="mt-4 font-bold text-white text-base">{p.title}</h3>
+                  <p className="mt-2 text-sm text-slate-300 leading-relaxed">{p.body}</p>
+                </div>
+              </Reveal>
+            ))}
+          </div>
+
+          <div className="mt-12 text-center">
+            <Link to="/pricing"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white text-slate-900 font-semibold shadow-lg hover:brightness-105 transition-all">
+              See full pricing details
+              <ArrowRight size={16} />
+            </Link>
+            <p className="mt-4 text-xs text-slate-400">
+              Advanced features may be available as optional add-ons.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* ───────────── Why Choose FixoraERP ───────────── */}
-      <section className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-slate-50 border-y border-slate-200">
+      <section id="why" className="relative overflow-hidden bg-gradient-to-br from-slate-50 via-white to-slate-50 border-y border-slate-200 scroll-mt-24">
         <div aria-hidden className="absolute inset-x-0 top-0 h-full -z-10 opacity-[0.3]"
           style={{ backgroundImage: 'radial-gradient(#cbd5e1 1px, transparent 1px)', backgroundSize: '22px 22px' }} />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-20">
@@ -164,7 +225,7 @@ export default function Home() {
       </section>
 
       {/* ───────────── How Switching Works ───────────── */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 py-20">
+      <section id="how" className="max-w-7xl mx-auto px-4 sm:px-6 py-20 scroll-mt-24">
         <div className="text-center max-w-2xl mx-auto">
           <div className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-bold uppercase tracking-widest rounded-full bg-emerald-50 text-emerald-700 border border-emerald-100">
             <Rocket size={12} /> How Switching Works
@@ -199,7 +260,7 @@ export default function Home() {
       </section>
 
       {/* ───────────── Product Showcase ───────────── */}
-      <section className="relative bg-slate-50 border-y border-slate-200">
+      <section id="showcase" className="relative bg-slate-50 border-y border-slate-200 scroll-mt-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 py-20">
           <div className="text-center max-w-2xl mx-auto">
             <div className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-bold uppercase tracking-widest rounded-full bg-slate-100 text-slate-700 border border-slate-200">
@@ -217,6 +278,55 @@ export default function Home() {
 
           <div className="mt-14">
             <DashboardPreview />
+          </div>
+        </div>
+      </section>
+
+      {/* ───────────── FAQ ───────────── */}
+      <section id="faq" className="max-w-5xl mx-auto px-4 sm:px-6 py-20 scroll-mt-24">
+        <div className="text-center max-w-2xl mx-auto">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-bold uppercase tracking-widest rounded-full bg-sky-50 text-sky-700 border border-sky-100">
+            <HelpCircle size={12} /> Frequently Asked Questions
+          </div>
+          <h2 className="mt-4 text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
+            Answers to the{' '}
+            <span className="bg-gradient-to-r from-brand-500 to-amber-500 bg-clip-text text-transparent">most common questions</span>.
+          </h2>
+        </div>
+
+        <div className="mt-12 space-y-3">
+          {faqs.map((f, i) => (
+            <FAQItem key={f.q} q={f.q} a={f.a} defaultOpen={i === 0} />
+          ))}
+        </div>
+      </section>
+
+      {/* ───────────── Contact ───────────── */}
+      <section id="contact" className="relative bg-gradient-to-br from-slate-50 to-white border-y border-slate-200 scroll-mt-24">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 py-20">
+          <div className="grid lg:grid-cols-5 gap-10">
+            <div className="lg:col-span-2">
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-bold uppercase tracking-widest rounded-full bg-brand-50 text-brand-700 border border-brand-100">
+                <Send size={12} /> Contact Us
+              </div>
+              <h2 className="mt-4 text-3xl sm:text-4xl font-bold text-slate-900 tracking-tight">
+                Questions? We're{' '}
+                <span className="bg-gradient-to-r from-brand-500 to-amber-500 bg-clip-text text-transparent">ready to help</span>.
+              </h2>
+              <p className="mt-4 text-slate-600 leading-relaxed">
+                Ask about pricing, migration, subscriptions, or advanced add-ons. We respond
+                within one business day.
+              </p>
+              <div className="mt-6 space-y-3 text-sm text-slate-600">
+                <div className="flex items-center gap-2"><CheckCircle2 size={16} className="text-emerald-500" /> Pricing & subscription guidance</div>
+                <div className="flex items-center gap-2"><CheckCircle2 size={16} className="text-emerald-500" /> Data migration planning</div>
+                <div className="flex items-center gap-2"><CheckCircle2 size={16} className="text-emerald-500" /> Product demos & walkthroughs</div>
+              </div>
+            </div>
+
+            <div className="lg:col-span-3">
+              <ContactForm />
+            </div>
           </div>
         </div>
       </section>
@@ -257,6 +367,136 @@ export default function Home() {
         </div>
       </section>
     </>
+  )
+}
+
+/* ─────────────────── FAQ accordion ─────────────────── */
+function FAQItem({ q, a, defaultOpen = false }) {
+  const [open, setOpen] = useState(defaultOpen)
+  return (
+    <div className={`border rounded-2xl overflow-hidden transition-all duration-300
+      ${open ? 'bg-white border-slate-300 shadow-md' : 'bg-white border-slate-200 hover:border-slate-300'}`}>
+      <button type="button" onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
+        className="w-full flex items-center justify-between gap-4 text-left px-6 py-5">
+        <span className="font-semibold text-slate-900 text-base sm:text-lg">{q}</span>
+        <ChevronDown size={20}
+          className={`shrink-0 text-slate-500 transition-transform duration-300 ${open ? 'rotate-180 text-brand-600' : ''}`} />
+      </button>
+      <div className={`grid transition-all duration-300 ease-out
+        ${open ? 'grid-rows-[1fr] opacity-100' : 'grid-rows-[0fr] opacity-0'}`}>
+        <div className="overflow-hidden">
+          <div className="px-6 pb-5 text-sm text-slate-600 leading-relaxed">{a}</div>
+        </div>
+      </div>
+    </div>
+  )
+}
+
+/* ─────────────────── Contact form ─────────────────── */
+function ContactForm() {
+  const [form, setForm] = useState({
+    name: '', shop: '', email: '', phone: '',
+    subject: '', topic: 'sales', message: '',
+  })
+  const [busy, setBusy] = useState(false)
+  const [sent, setSent] = useState('')
+  const [err, setErr] = useState('')
+  const update = (k) => (e) => setForm((f) => ({ ...f, [k]: e.target.value }))
+
+  const submit = async (e) => {
+    e.preventDefault()
+    if (busy) return
+    setErr(''); setSent(''); setBusy(true)
+    try {
+      const payload = {
+        name: form.name,
+        email: form.email,
+        shop: form.shop,
+        phone: form.phone,
+        topic: form.topic,
+        message: form.subject
+          ? `Subject: ${form.subject}\n\n${form.message}`
+          : form.message,
+      }
+      const r = await api('/public/contact', { method: 'POST', body: payload })
+      setSent(r.message || "Thanks! We'll get back to you within one business day.")
+    } catch (ex) {
+      setErr(ex.message || 'Something went wrong. Please try again.')
+    } finally {
+      setBusy(false)
+    }
+  }
+
+  if (sent) {
+    return (
+      <div className="h-full bg-white border border-emerald-200 rounded-2xl p-8 flex items-start gap-3 shadow-sm">
+        <span className="shrink-0 w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 grid place-items-center">
+          <Check size={20} />
+        </span>
+        <div>
+          <div className="font-bold text-emerald-900 text-lg">Message sent</div>
+          <div className="mt-1 text-sm text-emerald-800">{sent}</div>
+        </div>
+      </div>
+    )
+  }
+
+  return (
+    <form onSubmit={submit}
+      className="bg-white border border-slate-200 rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+      <div className="grid gap-4 sm:grid-cols-2">
+        <Field label="Full Name" value={form.name} onChange={update('name')} required autoComplete="name" />
+        <Field label="Business / Shop Name" value={form.shop} onChange={update('shop')} autoComplete="organization" />
+        <Field label="Email Address" type="email" value={form.email} onChange={update('email')} required autoComplete="email" />
+        <Field label="Phone Number" type="tel" value={form.phone} onChange={update('phone')} autoComplete="tel" />
+      </div>
+      <Field label="Subject" value={form.subject} onChange={update('subject')} placeholder="How can we help?" />
+      <label className="block">
+        <span className="text-sm font-medium text-slate-700">Inquiry Type</span>
+        <select value={form.topic} onChange={update('topic')}
+          className="mt-1 block w-full px-3 py-2.5 bg-white border border-slate-300 rounded-lg text-sm focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none">
+          <option value="sales">General Information</option>
+          <option value="pricing">Pricing and Subscription</option>
+          <option value="migration">Data Migration</option>
+          <option value="demo">Product Demonstration</option>
+          <option value="addons">Advanced Add-Ons</option>
+          <option value="support">Technical Questions</option>
+          <option value="other">Other</option>
+        </select>
+      </label>
+      <label className="block">
+        <span className="text-sm font-medium text-slate-700">Message</span>
+        <textarea value={form.message} onChange={update('message')} rows={5} required
+          className="mt-1 block w-full px-3 py-2.5 bg-white border border-slate-300 rounded-lg text-sm focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none" />
+      </label>
+      {err && (
+        <div className="p-3 rounded-lg bg-red-50 border border-red-200 text-sm text-red-800">{err}</div>
+      )}
+      <button type="submit" disabled={busy}
+        className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 text-white font-bold shadow-lg shadow-brand-500/30 hover:brightness-110 hover:shadow-xl transition-all disabled:opacity-60 disabled:cursor-not-allowed">
+        {busy ? (
+          <>
+            <span className="w-4 h-4 rounded-full border-2 border-white/30 border-t-white animate-spin" />
+            Sending…
+          </>
+        ) : (
+          <>
+            <Send size={16} /> Send Message
+          </>
+        )}
+      </button>
+    </form>
+  )
+}
+
+function Field({ label, type = 'text', ...rest }) {
+  return (
+    <label className="block">
+      <span className="text-sm font-medium text-slate-700">{label}</span>
+      <input type={type} {...rest}
+        className="mt-1 block w-full px-3 py-2.5 bg-white border border-slate-300 rounded-lg text-sm focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none" />
+    </label>
   )
 }
 
@@ -448,6 +688,34 @@ const migration = [
   },
 ]
 
+const pricingHighlights = [
+  {
+    Icon: DollarSign,
+    tint: 'from-brand-500 to-brand-700',
+    big: '$150/mo',
+    title: 'Starting Price',
+    body: 'Get started with FixoraERP with plans starting at just $150 per month.',
+  },
+  {
+    Icon: InfinityIcon,
+    tint: 'from-amber-500 to-orange-600',
+    title: 'Unlimited Users',
+    body: 'Bring your entire team onto one platform — no per-seat charges.',
+  },
+  {
+    Icon: CalendarCheck,
+    tint: 'from-emerald-500 to-teal-600',
+    title: 'No Long-Term Contracts',
+    body: 'Month-to-month flexibility. No lock-in. Cancel anytime.',
+  },
+  {
+    Icon: Puzzle,
+    tint: 'from-sky-500 to-blue-600',
+    title: 'Optional Add-Ons',
+    body: 'Choose advanced features only when your business needs them.',
+  },
+]
+
 const capabilities = [
   { Icon: FileText,       tint: 'from-brand-500 to-brand-700',   title: 'Estimates & repair orders', body: 'Build an estimate in minutes with labor, parts, fees, discounts, and taxes — then convert to a repair order in one click.' },
   { Icon: Receipt,        tint: 'from-amber-500 to-orange-600',  title: 'Invoices & payment tracking', body: 'Turn a finished RO into an invoice, send a secure payment link, and keep a clean record of what has been paid.' },
@@ -478,6 +746,45 @@ const switchSteps = [
     tint: 'from-emerald-500 to-teal-600',
     title: 'Start Using FixoraERP',
     body: 'Get familiar with the platform and manage your shop operations — estimates, ROs, inspections, invoices — through FixoraERP.',
+  },
+]
+
+const faqs = [
+  {
+    q: 'What is FixoraERP?',
+    a: 'FixoraERP is automotive repair shop management software designed to help repair businesses organize estimates, repair orders, invoices, inspections, customer communication, and other daily operations.',
+  },
+  {
+    q: 'How much does FixoraERP cost?',
+    a: 'Plans start at $150 per month. Additional advanced features may be available as optional paid add-ons. See the Pricing page for full details.',
+  },
+  {
+    q: 'Are there any hidden fees?',
+    a: 'FixoraERP aims to provide transparent pricing. Review the selected subscription plan and any optional add-ons before purchasing so you know exactly what you are paying for.',
+  },
+  {
+    q: 'Can I add multiple employees?',
+    a: 'Yes — the base subscription is built around a single shop, so your team uses the same platform without per-seat charges. If a specific plan has different terms, those will be clearly shown on the Pricing page.',
+  },
+  {
+    q: 'Do I need to sign a long-term contract?',
+    a: 'No. FixoraERP subscriptions are month-to-month. You can cancel from inside Settings at any time, and your subscription will end at the close of the current billing period.',
+  },
+  {
+    q: 'Can I migrate my existing shop data?',
+    a: "Yes — we help you plan the move from your current system. Reach out through the Contact form and tell us what you're using today, and we'll walk through what data can be brought over.",
+  },
+  {
+    q: 'Does FixoraERP offer additional features?',
+    a: 'Yes. Certain advanced capabilities may be available as optional add-ons. Contact the team for details about availability and pricing for your shop.',
+  },
+  {
+    q: 'How can I get started?',
+    a: 'Use the Get Started button below to begin the signup process. You can also contact us first if you have questions about plans, migration, or add-ons.',
+  },
+  {
+    q: 'How can I contact FixoraERP?',
+    a: 'Use the Contact Us form on this page to send a message. We respond within one business day.',
   },
 ]
 
