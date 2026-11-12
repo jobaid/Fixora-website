@@ -3,7 +3,6 @@ import { Link, NavLink } from 'react-router-dom'
 import { Menu, X } from 'lucide-react'
 import Logo from './Logo'
 
-const APP_ORIGIN = import.meta.env.VITE_APP_ORIGIN || 'https://fixoraerp.com'
 const SIGNIN_URL = import.meta.env.VITE_SIGNIN_URL || 'https://my.fixoraerp.com'
 
 const nav = [
@@ -19,7 +18,7 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-40 bg-white/85 backdrop-blur border-b border-slate-200 shadow-sm">
       <nav className="max-w-7xl mx-auto px-4 sm:px-6 flex items-center h-20 gap-6">
-        <Link to="/" aria-label="Fixora home" className="flex items-center shrink-0" href= "www.fixoraerp.com">
+        <Link to="/" aria-label="Fixora home" className="flex items-center shrink-0">
           <Logo height={64} className="drop-shadow-sm" />
         </Link>
         <div className="hidden md:flex items-center gap-1 ml-6">
@@ -32,7 +31,6 @@ export default function Navbar() {
         </div>
         <div className="ml-auto hidden md:flex items-center gap-3">
           <a href={SIGNIN_URL} className="text-sm text-slate-600 hover:text-slate-900 font-medium">Sign in</a>
-          <a href={`${APP_ORIGIN}/signup`} className="btn-primary">Start free trial</a>
         </div>
         <button className="md:hidden ml-auto" onClick={() => setOpen((v) => !v)} aria-label="Menu">
           {open ? <X /> : <Menu />}
@@ -48,27 +46,9 @@ export default function Navbar() {
               </NavLink>
             ))}
             <a href={SIGNIN_URL} className="px-3 py-2 rounded-md text-sm text-slate-700 hover:bg-slate-50">Sign in</a>
-            <a href={`${APP_ORIGIN}/signup`} className="btn-primary mt-2 text-center">Start free trial</a>
           </div>
         </div>
       )}
-      <style>{`
-        .btn-primary {
-          background: linear-gradient(90deg,#f97316,#ea580c);
-          color: #fff;
-          padding: 0.5rem 1rem;
-          border-radius: 0.6rem;
-          font-size: 0.875rem;
-          font-weight: 700;
-          box-shadow: 0 6px 18px -4px rgba(249,115,22,.45);
-          transition: filter .15s, transform .15s, box-shadow .15s;
-        }
-        .btn-primary:hover {
-          filter: brightness(1.08);
-          transform: translateY(-1px);
-          box-shadow: 0 10px 22px -4px rgba(249,115,22,.55);
-        }
-      `}</style>
     </header>
   )
 }
