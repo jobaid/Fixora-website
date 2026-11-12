@@ -34,7 +34,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="border-t border-slate-200 py-5 text-center text-xs text-slate-500">
-        © {new Date().getFullYear()} Fixora. All rights reserved.
+        © {new Date().getFullYear()} FixoraERP. All rights reserved. FixoraERP as a subsidiary of "Web Services LLC
       </div>
     </footer>
   )
