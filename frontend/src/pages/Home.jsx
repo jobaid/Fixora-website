@@ -167,61 +167,57 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="mt-12 text-center">
-            <Link to="/pricing"
-              className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white text-slate-900 font-semibold shadow-lg hover:brightness-105 transition-all">
-              See full pricing details
-              <ArrowRight size={16} />
-            </Link>
-            <p className="mt-4 text-xs text-slate-400">
-              Advanced features may be available as optional add-ons.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* ───────────── 30-Day Free Trial band ───────────── */}
-      <section id="trial" className="relative bg-white border-y border-slate-200 scroll-mt-24">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
-          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-50 via-amber-50 to-white border border-brand-100 p-8 sm:p-12">
-            <div aria-hidden className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-brand-500/15 blur-3xl" />
-            <div aria-hidden className="absolute -bottom-24 -left-16 w-72 h-72 rounded-full bg-amber-500/15 blur-3xl" />
+          {/* 30-Day Free Trial — inside pricing section */}
+          <div id="trial" className="mt-12 relative overflow-hidden rounded-3xl bg-gradient-to-br from-white/[0.08] to-white/[0.03] border border-white/15 backdrop-blur p-8 sm:p-10 scroll-mt-24">
+            <div aria-hidden className="absolute -top-16 -right-16 w-72 h-72 rounded-full bg-amber-500/20 blur-3xl" />
+            <div aria-hidden className="absolute -bottom-20 -left-16 w-72 h-72 rounded-full bg-brand-500/20 blur-3xl" />
 
             <div className="relative grid md:grid-cols-5 gap-8 items-center">
               <div className="md:col-span-1 flex justify-center md:justify-start">
                 <div className="relative">
-                  <div aria-hidden className="absolute inset-0 rounded-3xl bg-gradient-to-br from-brand-500 to-amber-500 blur-2xl opacity-40" />
-                  <div className="relative w-24 h-24 rounded-3xl bg-gradient-to-br from-brand-500 to-brand-700 text-white grid place-items-center shadow-xl ring-4 ring-white">
+                  <div aria-hidden className="absolute inset-0 rounded-3xl bg-gradient-to-br from-brand-500 to-amber-500 blur-2xl opacity-50" />
+                  <div className="relative w-24 h-24 rounded-3xl bg-gradient-to-br from-brand-500 to-brand-700 text-white grid place-items-center shadow-xl ring-4 ring-white/10">
                     <Gift size={44} />
                   </div>
                 </div>
               </div>
 
               <div className="md:col-span-3 text-center md:text-left">
-                <div className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-bold uppercase tracking-widest rounded-full bg-brand-600 text-white shadow-sm">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-bold uppercase tracking-widest rounded-full bg-gradient-to-r from-brand-500 to-amber-500 text-white shadow-sm">
                   30-Day Free Trial
                 </div>
-                <h2 className="mt-4 text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 tracking-tight">
+                <h3 className="mt-4 text-2xl sm:text-3xl font-bold text-white tracking-tight">
                   Try FixoraERP for{' '}
-                  <span className="bg-gradient-to-r from-brand-500 to-amber-500 bg-clip-text text-transparent">30 days</span>.
-                </h2>
-                <p className="mt-3 text-slate-600 leading-relaxed">
+                  <span className="bg-gradient-to-r from-amber-300 via-orange-400 to-amber-200 bg-clip-text text-transparent">30 days</span>.
+                </h3>
+                <p className="mt-3 text-slate-300 leading-relaxed">
                   Explore FixoraERP and experience how it can help manage your automotive
                   repair business.
                 </p>
-                <p className="mt-3 text-xs text-slate-500">
+                <p className="mt-3 text-xs text-slate-400">
                   Plans starting at $150/month after your trial.
                 </p>
               </div>
 
               <div className="md:col-span-1 flex justify-center md:justify-end">
                 <a href={SIGNUP_URL}
-                  className="group inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 text-white font-bold shadow-lg shadow-brand-500/30 hover:shadow-xl hover:brightness-110 transition-all whitespace-nowrap">
+                  className="group inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white text-slate-900 font-bold shadow-xl hover:brightness-105 transition-all whitespace-nowrap">
                   Start Free Trial
                   <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                 </a>
               </div>
             </div>
+          </div>
+
+          <div className="mt-10 text-center">
+            <Link to="/pricing"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-white/80 hover:text-white">
+              See full pricing details
+              <ArrowRight size={14} />
+            </Link>
+            <p className="mt-3 text-xs text-slate-400">
+              Advanced features may be available as optional add-ons.
+            </p>
           </div>
         </div>
       </section>
