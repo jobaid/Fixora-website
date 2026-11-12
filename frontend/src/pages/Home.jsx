@@ -5,7 +5,7 @@ import {
   FileText, Sparkles, BarChart3, CheckCircle2, Car, Receipt, Camera,
   RefreshCw, LifeBuoy, CalendarCheck, PhoneCall, Database, Rocket,
   DollarSign, UserPlus, Infinity as InfinityIcon, Puzzle, ChevronDown,
-  Send, Check, HelpCircle,
+  Send, Check, HelpCircle, Gift,
 } from 'lucide-react'
 import { api } from '../lib/api'
 
@@ -176,6 +176,52 @@ export default function Home() {
             <p className="mt-4 text-xs text-slate-400">
               Advanced features may be available as optional add-ons.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ───────────── 30-Day Free Trial band ───────────── */}
+      <section id="trial" className="relative bg-white border-y border-slate-200 scroll-mt-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+          <div className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-brand-50 via-amber-50 to-white border border-brand-100 p-8 sm:p-12">
+            <div aria-hidden className="absolute -top-20 -right-20 w-72 h-72 rounded-full bg-brand-500/15 blur-3xl" />
+            <div aria-hidden className="absolute -bottom-24 -left-16 w-72 h-72 rounded-full bg-amber-500/15 blur-3xl" />
+
+            <div className="relative grid md:grid-cols-5 gap-8 items-center">
+              <div className="md:col-span-1 flex justify-center md:justify-start">
+                <div className="relative">
+                  <div aria-hidden className="absolute inset-0 rounded-3xl bg-gradient-to-br from-brand-500 to-amber-500 blur-2xl opacity-40" />
+                  <div className="relative w-24 h-24 rounded-3xl bg-gradient-to-br from-brand-500 to-brand-700 text-white grid place-items-center shadow-xl ring-4 ring-white">
+                    <Gift size={44} />
+                  </div>
+                </div>
+              </div>
+
+              <div className="md:col-span-3 text-center md:text-left">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 text-xs font-bold uppercase tracking-widest rounded-full bg-brand-600 text-white shadow-sm">
+                  30-Day Free Trial
+                </div>
+                <h2 className="mt-4 text-2xl sm:text-3xl lg:text-4xl font-bold text-slate-900 tracking-tight">
+                  Try FixoraERP for{' '}
+                  <span className="bg-gradient-to-r from-brand-500 to-amber-500 bg-clip-text text-transparent">30 days</span>.
+                </h2>
+                <p className="mt-3 text-slate-600 leading-relaxed">
+                  Explore FixoraERP and experience how it can help manage your automotive
+                  repair business.
+                </p>
+                <p className="mt-3 text-xs text-slate-500">
+                  Plans starting at $150/month after your trial.
+                </p>
+              </div>
+
+              <div className="md:col-span-1 flex justify-center md:justify-end">
+                <a href={SIGNUP_URL}
+                  className="group inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 text-white font-bold shadow-lg shadow-brand-500/30 hover:shadow-xl hover:brightness-110 transition-all whitespace-nowrap">
+                  Start Free Trial
+                  <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </section>
