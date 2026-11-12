@@ -432,19 +432,19 @@ const migration = [
     Icon: RefreshCw,
     tint: 'from-brand-500 to-brand-700',
     title: 'Quick Switchover',
-    body: 'Enjoy a smooth transition from your current shop management system. Our migration process is designed to help you move to FixoraERP with minimal disruption.',
+    body: 'Smooth transition from your current system.',
   },
   {
     Icon: LifeBuoy,
     tint: 'from-amber-500 to-orange-600',
     title: 'Real Support Through the Process',
-    body: 'We help guide you through the data migration process and provide support as you get familiar with FixoraERP.',
+    body: 'We help you move your data and get running.',
   },
   {
     Icon: CalendarCheck,
     tint: 'from-emerald-500 to-teal-600',
     title: 'Month-to-Month',
-    body: "No long-term commitment. Cancel anytime. We work to earn your business every month.",
+    body: 'Cancel anytime. We earn your business every month.',
   },
 ]
 
