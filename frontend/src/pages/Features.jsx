@@ -4,6 +4,8 @@ import {
   Sparkles, Zap, Wrench, Car, Receipt, QrCode, Bell, TrendingUp, CheckCircle2,
 } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import SEO from '../components/SEO'
+import { PAGES, breadcrumbJsonLd, softwareAppJsonLd } from '../lib/seo-config'
 
 const APP_ORIGIN = import.meta.env.VITE_APP_ORIGIN || 'https://fixoraerp.com'
 
@@ -52,6 +54,19 @@ const groups = [
 export default function Features() {
   return (
     <div className="relative overflow-hidden">
+      <SEO
+        title={PAGES.features.title}
+        description={PAGES.features.description}
+        keywords={PAGES.features.keywords}
+        path={PAGES.features.path}
+        jsonLd={[
+          softwareAppJsonLd(),
+          breadcrumbJsonLd([
+            { name: 'Home', path: '/' },
+            { name: 'Features', path: '/features' },
+          ]),
+        ]}
+      />
       {/* Backdrop */}
       <div aria-hidden className="absolute inset-x-0 top-0 h-[520px] -z-10"
         style={{ background: 'radial-gradient(ellipse at 50% -20%, rgba(249,115,22,0.22), transparent 60%), linear-gradient(180deg,#f6faff,#ffffff)' }} />

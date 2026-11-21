@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { ChevronDown } from 'lucide-react'
+import SEO from '../components/SEO'
+import { PAGES, breadcrumbJsonLd, faqPageJsonLd } from '../lib/seo-config'
 
 const faqs = [
   { q: 'Is there a free trial?', a: 'Yes, 30 days on every plan. No charge until the trial ends, cancel from Settings → Add-ons.' },
@@ -18,6 +20,19 @@ export default function FAQ() {
   const [open, setOpen] = useState(0)
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-16">
+      <SEO
+        title={PAGES.faq.title}
+        description={PAGES.faq.description}
+        keywords={PAGES.faq.keywords}
+        path={PAGES.faq.path}
+        jsonLd={[
+          faqPageJsonLd(faqs),
+          breadcrumbJsonLd([
+            { name: 'Home', path: '/' },
+            { name: 'FAQ', path: '/faq' },
+          ]),
+        ]}
+      />
       <h1 className="text-4xl font-extrabold text-slate-900">Frequently asked questions</h1>
       <p className="mt-3 text-slate-600">The quick answers. Still have questions? <a href="/contact" className="text-brand-600 font-semibold">Contact us.</a></p>
       <div className="mt-10 divide-y divide-slate-200 border-y border-slate-200">

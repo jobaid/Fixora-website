@@ -15,6 +15,12 @@ func (s *Server) Routes(mux *http.ServeMux) {
 	})
 	mux.HandleFunc("GET /api/public/plans", s.listPlans)
 	mux.HandleFunc("POST /api/public/contact", s.submitContact)
+
+	// SEO — served at site root with correct content types. These sit in
+	// front of the SPA catch-all in main.go thanks to Go 1.22+'s pattern
+	// specificity.
+	mux.HandleFunc("GET /sitemap.xml", s.sitemapXML)
+	mux.HandleFunc("GET /robots.txt", s.robotsTXT)
 }
 
 func writeJSON(w http.ResponseWriter, status int, v any) {

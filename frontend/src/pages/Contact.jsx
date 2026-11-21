@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Send, Check } from 'lucide-react'
 import { api } from '../lib/api'
+import SEO from '../components/SEO'
+import { PAGES, breadcrumbJsonLd } from '../lib/seo-config'
 
 export default function Contact() {
   const [form, setForm] = useState({ name: '', email: '', shop: '', phone: '', topic: 'sales', message: '' })
@@ -21,6 +23,16 @@ export default function Contact() {
 
   return (
     <div className="max-w-2xl mx-auto px-4 sm:px-6 py-16">
+      <SEO
+        title={PAGES.contact.title}
+        description={PAGES.contact.description}
+        keywords={PAGES.contact.keywords}
+        path={PAGES.contact.path}
+        jsonLd={breadcrumbJsonLd([
+          { name: 'Home', path: '/' },
+          { name: 'Contact', path: '/contact' },
+        ])}
+      />
       <h1 className="text-4xl font-extrabold text-slate-900">Get in touch</h1>
       <p className="mt-3 text-slate-600">Questions about plans, a demo, or support? Send a note and we'll respond within one business day.</p>
 

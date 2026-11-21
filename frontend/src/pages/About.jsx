@@ -1,6 +1,22 @@
+import SEO from '../components/SEO'
+import { PAGES, breadcrumbJsonLd, orgJsonLd } from '../lib/seo-config'
+
 export default function About() {
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 py-16">
+      <SEO
+        title={PAGES.about.title}
+        description={PAGES.about.description}
+        keywords={PAGES.about.keywords}
+        path={PAGES.about.path}
+        jsonLd={[
+          orgJsonLd(),
+          breadcrumbJsonLd([
+            { name: 'Home', path: '/' },
+            { name: 'About', path: '/about' },
+          ]),
+        ]}
+      />
       <h1 className="text-4xl font-extrabold text-slate-900">About Fixora</h1>
       <div className="prose prose-slate mt-6 text-slate-700 leading-relaxed">
         <p>

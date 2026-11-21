@@ -7,6 +7,8 @@ import {
   Calendar, UserCheck, Settings, Infinity, Palette, Truck, DollarSign, PieChart, Camera, QrCode,
 } from 'lucide-react'
 import { api } from '../lib/api'
+import SEO from '../components/SEO'
+import { PAGES, breadcrumbJsonLd } from '../lib/seo-config'
 
 const APP_ORIGIN = import.meta.env.VITE_APP_ORIGIN || 'https://fixoraerp.com'
 
@@ -114,6 +116,16 @@ export default function Pricing() {
 
   return (
     <div className="relative overflow-hidden">
+      <SEO
+        title={PAGES.pricing.title}
+        description={PAGES.pricing.description}
+        keywords={PAGES.pricing.keywords}
+        path={PAGES.pricing.path}
+        jsonLd={breadcrumbJsonLd([
+          { name: 'Home', path: '/' },
+          { name: 'Pricing', path: '/pricing' },
+        ])}
+      />
       {/* Soft gradient backdrop */}
       <div aria-hidden className="absolute inset-x-0 top-0 h-[620px] -z-10"
         style={{ background: 'radial-gradient(ellipse at 50% -20%, rgba(249,115,22,0.22), transparent 60%), linear-gradient(180deg,#f6faff,#ffffff)' }} />

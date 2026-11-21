@@ -2,23 +2,108 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="fixora-logo.png" sizes="any" />
-    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-    <link rel="apple-touch-icon" href="fixora-logo.png" />
-    <link rel="shortcut icon" href="fixora-logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Fixora — Modern auto repair shop management</title>
-    <meta name="description" content="Run your auto repair shop smarter with Fixora. Estimates, repair orders, vehicle inspections, customer approvals, invoices — one connected platform." />
-    <meta property="og:title" content="Fixora — Modern auto repair shop management" />
-    <meta property="og:description" content="Manage estimates, repair orders, vehicle inspections, customer approvals, invoices, technicians, and shop performance in one connected platform." />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    <!-- Analytics measurement IDs. Fill these in to activate tracking.
+         Leave empty to keep analytics OFF (no requests are made). -->
+    <meta name="ga4-id" content="" />
+    <meta name="gtm-id" content="" />
+    <!-- Search Console verification. Paste the HTML-tag code's content value. -->
+    <meta name="google-site-verification" content="" />
+
+    <link rel="icon" type="image/png" href="/fixora-logo.png" sizes="any" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/fixora-logo.png" />
+    <link rel="shortcut icon" href="/fixora-logo.png" />
+    <link rel="canonical" href="https://www.fixoraerp.com/" />
+
+    <title>Fixora ERP — Shop Management Software for Auto Repair Shops</title>
+    <meta name="description" content="Fixora ERP is cloud-based shop management software for independent auto repair shops. Estimates, repair orders, digital vehicle inspections, customer approvals, online payments, and real-time reporting in one platform. 30-day free trial." />
+    <meta name="keywords" content="shop management software, auto repair shop software, repair shop management system, cloud shop management software, digital vehicle inspection, repair order software" />
+    <meta name="robots" content="index, follow" />
+    <meta name="author" content="Web Services LLC" />
+
+    <meta property="og:title" content="Fixora ERP — Shop Management Software for Auto Repair Shops" />
+    <meta property="og:description" content="Run estimates, repair orders, digital vehicle inspections, customer approvals, and online payments in one platform. 30-day free trial." />
     <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://www.fixoraerp.com/" />
+    <meta property="og:site_name" content="Fixora ERP" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:image" content="https://www.fixoraerp.com/fixora-logo.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Fixora ERP — Shop Management Software for Auto Repair Shops" />
+    <meta name="twitter:description" content="Cloud-based shop management software for independent auto repair shops. 30-day free trial." />
+    <meta name="twitter:image" content="https://www.fixoraerp.com/fixora-logo.png" />
+
     <meta name="theme-color" content="#f97316" />
+    <meta name="application-name" content="Fixora ERP" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link
+      rel="preload"
+      as="style"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      media="print"
+      onload="this.media='all'"
+    />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      />
+    </noscript>
+
+    <style>
+      .seo-static-fallback { position: absolute; left: -10000px; top: auto; width: 1px; height: 1px; overflow: hidden; }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div class="seo-static-fallback">
+        <h1>Fixora ERP — Shop Management Software for Auto Repair Shops</h1>
+        <p>
+          Fixora ERP is cloud-based shop management software built for independent auto repair shops. Run estimates,
+          repair orders, digital vehicle inspections, customer approvals, online payments, and real-time reporting from
+          one dashboard. 30-day free trial. No credit card required. Operated by Web Services LLC.
+        </p>
+      </div>
+    </div>
+
+    <!-- Analytics bootstrap — only runs when a measurement ID is set above. -->
+    <script>
+      (function () {
+        var gtm = document.querySelector('meta[name="gtm-id"]');
+        var ga4 = document.querySelector('meta[name="ga4-id"]');
+        var gtmId = gtm && gtm.getAttribute('content');
+        var ga4Id = ga4 && ga4.getAttribute('content');
+        if (gtmId) {
+          window.dataLayer = window.dataLayer || [];
+          (function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
+            var f = d.getElementsByTagName(s)[0], j = d.createElement(s);
+            j.async = true; j.src = 'https://www.googletagmanager.com/gtm.js?id=' + i;
+            f.parentNode.insertBefore(j, f);
+          })(window, document, 'script', 'dataLayer', gtmId);
+        }
+        if (ga4Id) {
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://www.googletagmanager.com/gtag/js?id=' + ga4Id;
+          document.head.appendChild(s);
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function () { window.dataLayer.push(arguments); };
+          window.gtag('js', new Date());
+          window.gtag('config', ga4Id, { anonymize_ip: true });
+        }
+      })();
+    </script>
+
     <script type="module" src="/src/main.jsx"></script>
   </body>
 </html>

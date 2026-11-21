@@ -8,6 +8,8 @@ import {
   Send, Check, HelpCircle, Gift,
 } from 'lucide-react'
 import { api } from '../lib/api'
+import SEO from '../components/SEO'
+import { PAGES, orgJsonLd, webSiteJsonLd, softwareAppJsonLd } from '../lib/seo-config'
 
 const APP_ORIGIN = import.meta.env.VITE_APP_ORIGIN || 'https://fixoraerp.com'
 const SIGNUP_URL = `${APP_ORIGIN}/signup`
@@ -38,6 +40,13 @@ function Reveal({ children, delay = 0, as: Tag = 'div', className = '' }) {
 export default function Home() {
   return (
     <>
+      <SEO
+        title={PAGES.home.title}
+        description={PAGES.home.description}
+        keywords={PAGES.home.keywords}
+        path={PAGES.home.path}
+        jsonLd={[orgJsonLd(), webSiteJsonLd(), softwareAppJsonLd()]}
+      />
       <AnimStyles />
 
       {/* ───────────── Hero ───────────── */}
