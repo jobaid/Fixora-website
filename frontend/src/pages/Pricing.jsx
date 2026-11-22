@@ -11,7 +11,6 @@ import { api } from '../lib/api'
 import SEO from '../components/SEO'
 import { PAGES, breadcrumbJsonLd } from '../lib/seo-config'
 
-const APP_ORIGIN = import.meta.env.VITE_APP_ORIGIN || 'https://fixoraerp.com'
 
 // Visual identity per plan — picked by the plan key or name.
 const PLAN_THEMES = {
@@ -184,7 +183,6 @@ export default function Pricing() {
                 const price = annual && p.annualPrice ? p.annualPrice / 12 : p.monthlyPrice
                 const total = annual ? p.annualPrice : p.monthlyPrice
                 const save = annualSavePct(p)
-                const signupHref = (p.signupUrl || `${APP_ORIGIN}/signup?plan=${p.key}`) + (annual ? '&cycle=annual' : '')
                 const isTop = p.highlighted
 
                 return (

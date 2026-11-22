@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import SEO from '../../components/SEO'
-import { PAGES, SITE, SIGNUP_URL, breadcrumbJsonLd, articleJsonLd } from '../../lib/seo-config'
+import { PAGES, SITE, breadcrumbJsonLd, articleJsonLd } from '../../lib/seo-config'
 import { track } from '../../lib/analytics'
 
 const PUBLISHED = '2026-11-10'
@@ -61,13 +61,13 @@ export default function BenefitsCloudShopManagement() {
         <li>Transparent pricing starting at ${SITE.startingPriceUSD}/month with a {SITE.trialDays}-day free trial.</li>
       </ul>
 
-      <p><Link to="/features">See all features</Link> &middot; <Link to="/pricing">Pricing</Link> &middot; <a href={SIGNUP_URL} onClick={() => track.trialClick('blog_cloud_body')}>Start the trial</a></p>
+      <p><Link to="/features">See all features</Link> &middot; <Link to="/pricing">Pricing</Link> &middot; <Link to="/contact?topic=demo" onClick={() => track.demoClick('blog_cloud_body')}>Book a demo</Link></p>
 
       <div className="not-prose mt-10 p-6 rounded-xl bg-brand-50 border border-brand-100 text-center">
         <p className="font-semibold text-slate-900">Try {SITE.name} free for 30 days</p>
-        <a href={SIGNUP_URL} onClick={() => track.trialClick('blog_cloud_bottom')} className="mt-3 inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-gradient-to-r from-brand-500 to-brand-700 text-white font-semibold">
-          Start free trial
-        </a>
+        <Link to="/contact?topic=demo" onClick={() => track.demoClick('blog_cloud_bottom')} className="mt-3 inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-gradient-to-r from-brand-500 to-brand-700 text-white font-semibold">
+          Book a Demo
+        </Link>
       </div>
     </article>
   )

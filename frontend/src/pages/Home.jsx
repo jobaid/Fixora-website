@@ -11,8 +11,6 @@ import { api } from '../lib/api'
 import SEO from '../components/SEO'
 import { PAGES, orgJsonLd, webSiteJsonLd, softwareAppJsonLd } from '../lib/seo-config'
 
-const APP_ORIGIN = import.meta.env.VITE_APP_ORIGIN || 'https://fixoraerp.com'
-const SIGNUP_URL = `${APP_ORIGIN}/signup`
 
 /* Reveal — fades + slides a child in when it scrolls into view. */
 function Reveal({ children, delay = 0, as: Tag = 'div', className = '' }) {
@@ -405,11 +403,11 @@ export default function Home() {
               Take the next step toward a more organized and efficient repair shop with FixoraERP.
             </p>
             <div className="mt-10 flex justify-center">
-              <a href={SIGNUP_URL}
+              <Link to="/contact?topic=demo"
                 className="group inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-gradient-to-r from-brand-500 to-brand-600 text-white font-bold text-base shadow-xl shadow-brand-500/30 hover:shadow-2xl hover:shadow-brand-500/40 hover:brightness-110 transition-all">
-                Get Started
+                Book a Demo
                 <ArrowRight size={18} className="group-hover:translate-x-1 transition-transform" />
-              </a>
+              </Link>
             </div>
             <p className="mt-4 text-xs text-slate-400">
               Month-to-month. Cancel anytime from Settings.
@@ -831,7 +829,7 @@ const faqs = [
   },
   {
     q: 'How can I get started?',
-    a: 'Use the Get Started button below to begin the signup process. You can also contact us first if you have questions about plans, migration, or add-ons.',
+    a: 'Use the Book a Demo button below and we will walk you through FixoraERP and the onboarding process. You can also contact us if you have questions about plans, migration, or add-ons.',
   },
   {
     q: 'How can I contact FixoraERP?',

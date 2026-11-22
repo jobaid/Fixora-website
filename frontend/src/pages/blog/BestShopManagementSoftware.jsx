@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import SEO from '../../components/SEO'
-import { PAGES, SITE, SIGNUP_URL, breadcrumbJsonLd, articleJsonLd } from '../../lib/seo-config'
+import { PAGES, SITE, breadcrumbJsonLd, articleJsonLd } from '../../lib/seo-config'
 import { track } from '../../lib/analytics'
 
 const PUBLISHED = '2026-10-15'
@@ -65,7 +65,7 @@ export default function BestShopManagementSoftware() {
 
       <h2>Where Fixora ERP fits</h2>
       <p>Fixora ERP is cloud-based shop management software for independent auto repair shops. One record flows from estimate to invoice. Digital inspections and online customer approvals are first-class. Technician mobile submit is included. Plans start at ${SITE.startingPriceUSD}/month and include a {SITE.trialDays}-day free trial &mdash; the real trial, not a sandbox.</p>
-      <p>You can <a href={SIGNUP_URL} onClick={() => track.trialClick('blog_best_body')}>start a trial here</a>, see <Link to="/features">everything the product covers</Link>, or check the <Link to="/pricing">pricing page</Link>.</p>
+      <p>You can <Link to="/contact?topic=demo" onClick={() => track.demoClick('blog_best_body')}>book a demo here</Link>, see <Link to="/features">everything the product covers</Link>, or check the <Link to="/pricing">pricing page</Link>.</p>
 
       <h2>FAQ</h2>
       <p><strong>What is the best shop management software for small businesses?</strong><br />
@@ -75,9 +75,9 @@ export default function BestShopManagementSoftware() {
 
       <div className="not-prose mt-10 p-6 rounded-xl bg-brand-50 border border-brand-100 text-center">
         <p className="font-semibold text-slate-900">Ready to see {SITE.name} with your own data?</p>
-        <a href={SIGNUP_URL} onClick={() => track.trialClick('blog_best_bottom')} className="mt-3 inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-gradient-to-r from-brand-500 to-brand-700 text-white font-semibold">
-          Start your 30-day free trial
-        </a>
+        <Link to="/contact?topic=demo" onClick={() => track.demoClick('blog_best_bottom')} className="mt-3 inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-gradient-to-r from-brand-500 to-brand-700 text-white font-semibold">
+          Book a Demo
+        </Link>
       </div>
     </article>
   )

@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom'
 import SEO from '../components/SEO'
 import { PAGES, breadcrumbJsonLd, softwareAppJsonLd } from '../lib/seo-config'
 
-const APP_ORIGIN = import.meta.env.VITE_APP_ORIGIN || 'https://fixoraerp.com'
 
 const groups = [
   {

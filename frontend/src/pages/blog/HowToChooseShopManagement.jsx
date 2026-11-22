@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import SEO from '../../components/SEO'
-import { PAGES, SITE, SIGNUP_URL, breadcrumbJsonLd, articleJsonLd } from '../../lib/seo-config'
+import { PAGES, SITE, breadcrumbJsonLd, articleJsonLd } from '../../lib/seo-config'
 import { track } from '../../lib/analytics'
 
 const PUBLISHED = '2026-11-01'
@@ -74,7 +74,7 @@ export default function HowToChooseShopManagement() {
 
       <h2>How Fixora ERP answers this checklist</h2>
       <p>{SITE.name} is designed to pass this checklist by default: one record across the workflow, DVI tied to the RO, customer per-item online approval, full export in CSV/JSON, Argon2id passwords, AES-GCM for secrets at rest, company_id scoping enforced on every endpoint, transparent pricing starting at ${SITE.startingPriceUSD}/month, and a {SITE.trialDays}-day free trial that gives you full access.</p>
-      <p><Link to="/features">Full feature list</Link> &middot; <Link to="/pricing">Pricing</Link> &middot; <a href={SIGNUP_URL} onClick={() => track.trialClick('blog_choose_body')}>Start the trial</a></p>
+      <p><Link to="/features">Full feature list</Link> &middot; <Link to="/pricing">Pricing</Link> &middot; <Link to="/contact?topic=demo" onClick={() => track.demoClick('blog_choose_body')}>Book a demo</Link></p>
 
       <div className="not-prose mt-10 p-6 rounded-xl bg-brand-50 border border-brand-100 text-center">
         <p className="font-semibold text-slate-900">Want a quick demo tailored to your shop?</p>

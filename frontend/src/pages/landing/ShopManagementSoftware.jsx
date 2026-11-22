@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, CheckCircle2, ClipboardCheck, FileText, CreditCard, Smartphone, ShieldCheck, Zap } from 'lucide-react'
 import SEO from '../../components/SEO'
-import { PAGES, SITE, SIGNUP_URL, breadcrumbJsonLd, softwareAppJsonLd, faqPageJsonLd } from '../../lib/seo-config'
+import { PAGES, SITE, breadcrumbJsonLd, softwareAppJsonLd, faqPageJsonLd } from '../../lib/seo-config'
 import { track } from '../../lib/analytics'
 
 const faqs = [
@@ -36,9 +36,9 @@ export default function ShopManagementSoftware() {
           Fixora ERP is cloud-based <strong>shop management software</strong> that replaces paper estimates, spreadsheet trackers, and separate payment and inspection tools. Run estimates, repair orders, digital vehicle inspections, customer approvals, and payments from one connected system you access from any browser or phone.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
-          <a href={SIGNUP_URL} onClick={() => track.trialClick('lp_shopmgmt_hero')} className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-gradient-to-r from-brand-500 to-brand-700 text-white font-semibold hover:brightness-110">
-            Start your 30-day free trial <ArrowRight size={16} aria-hidden="true" />
-          </a>
+          <Link to="/contact?topic=demo" onClick={() => track.demoClick('lp_shopmgmt_hero')} className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-gradient-to-r from-brand-500 to-brand-700 text-white font-semibold hover:brightness-110">
+            Book a Demo <ArrowRight size={16} aria-hidden="true" />
+          </Link>
           <Link to="/pricing" className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-white text-slate-800 border border-slate-200 font-semibold hover:border-slate-300">
             See pricing
           </Link>
@@ -114,11 +114,11 @@ export default function ShopManagementSoftware() {
         <h2 className="text-3xl font-bold text-slate-900">Try {SITE.name} free for 30 days</h2>
         <p className="mt-3 text-slate-600">Full access during your trial. No credit card required. Cancel from Settings any time.</p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <a href={SIGNUP_URL} onClick={() => track.trialClick('lp_shopmgmt_bottom')} className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-gradient-to-r from-brand-500 to-brand-700 text-white font-semibold hover:brightness-110">
-            Start free trial <ArrowRight size={16} aria-hidden="true" />
-          </a>
-          <Link to="/contact" onClick={() => track.demoClick('lp_shopmgmt_bottom')} className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-white text-slate-800 border border-slate-200 font-semibold hover:border-slate-300">
-            Request a demo
+          <Link to="/contact?topic=demo" onClick={() => track.demoClick('lp_shopmgmt_bottom')} className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-gradient-to-r from-brand-500 to-brand-700 text-white font-semibold hover:brightness-110">
+            Book a Demo <ArrowRight size={16} aria-hidden="true" />
+          </Link>
+          <Link to="/pricing" className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-white text-slate-800 border border-slate-200 font-semibold hover:border-slate-300">
+            See pricing
           </Link>
         </div>
       </section>

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { ArrowRight, CheckCircle2, Wrench, ClipboardCheck, FileText, Smartphone, Users, CreditCard } from 'lucide-react'
 import SEO from '../../components/SEO'
-import { PAGES, SITE, SIGNUP_URL, breadcrumbJsonLd, softwareAppJsonLd, faqPageJsonLd } from '../../lib/seo-config'
+import { PAGES, SITE, breadcrumbJsonLd, softwareAppJsonLd, faqPageJsonLd } from '../../lib/seo-config'
 import { track } from '../../lib/analytics'
 
 const faqs = [
@@ -36,9 +36,9 @@ export default function AutoRepairShopSoftware() {
           Fixora ERP is auto repair shop software built around the actual workflow of an independent shop — from the first phone call through the paid invoice. Estimates convert to repair orders. Digital inspections become customer approvals. Approvals roll onto the invoice. Nothing is retyped and nothing is lost between apps.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
-          <a href={SIGNUP_URL} onClick={() => track.trialClick('lp_autorepair_hero')} className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-gradient-to-r from-brand-500 to-brand-700 text-white font-semibold hover:brightness-110">
-            Start your 30-day free trial <ArrowRight size={16} aria-hidden="true" />
-          </a>
+          <Link to="/contact?topic=demo" onClick={() => track.demoClick('lp_autorepair_hero')} className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-gradient-to-r from-brand-500 to-brand-700 text-white font-semibold hover:brightness-110">
+            Book a Demo <ArrowRight size={16} aria-hidden="true" />
+          </Link>
           <Link to="/features" className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-white text-slate-800 border border-slate-200 font-semibold hover:border-slate-300">
             See all features
           </Link>
@@ -106,11 +106,11 @@ export default function AutoRepairShopSoftware() {
         <h2 className="text-3xl font-bold text-slate-900">Try {SITE.name} free for 30 days</h2>
         <p className="mt-3 text-slate-600">No credit card required. No lock-in. Full access during your trial.</p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
-          <a href={SIGNUP_URL} onClick={() => track.trialClick('lp_autorepair_bottom')} className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-gradient-to-r from-brand-500 to-brand-700 text-white font-semibold hover:brightness-110">
-            Start free trial <ArrowRight size={16} aria-hidden="true" />
-          </a>
-          <Link to="/contact" onClick={() => track.demoClick('lp_autorepair_bottom')} className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-white text-slate-800 border border-slate-200 font-semibold hover:border-slate-300">
-            Request a demo
+          <Link to="/contact?topic=demo" onClick={() => track.demoClick('lp_autorepair_bottom')} className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-gradient-to-r from-brand-500 to-brand-700 text-white font-semibold hover:brightness-110">
+            Book a Demo <ArrowRight size={16} aria-hidden="true" />
+          </Link>
+          <Link to="/pricing" className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-white text-slate-800 border border-slate-200 font-semibold hover:border-slate-300">
+            See pricing
           </Link>
         </div>
       </section>
