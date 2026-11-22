@@ -105,7 +105,9 @@ export default function Pricing() {
   const [annual, setAnnual] = useState(false)
 
   useEffect(() => {
-    api('/public/plans').then(setPlans).catch((e) => setErr(e.message)).finally(() => setLoading(false))
+    // Served by the main Fixora app (same endpoint its signup page uses);
+    // nginx routes /api/ on www.fixoraerp.com to that app.
+    api('/public/signup/plans').then(setPlans).catch((e) => setErr(e.message)).finally(() => setLoading(false))
   }, [])
 
   const annualSavePct = (p) => {
