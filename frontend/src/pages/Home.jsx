@@ -209,11 +209,11 @@ export default function Home() {
               </div>
 
               <div className="md:col-span-1 flex justify-center md:justify-end">
-                <a href={SIGNUP_URL}
+                <Link to="/contact?topic=demo"
                   className="group inline-flex items-center gap-2 px-6 py-3.5 rounded-xl bg-white text-slate-900 font-bold shadow-xl hover:brightness-105 transition-all whitespace-nowrap">
-                  Start Free Trial
+                  Book a Demo
                   <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-                </a>
+                </Link>
               </div>
             </div>
           </div>

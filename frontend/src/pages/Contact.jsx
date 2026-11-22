@@ -1,11 +1,29 @@
 import { useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { Send, Check } from 'lucide-react'
 import { api } from '../lib/api'
 import SEO from '../components/SEO'
 import { PAGES, breadcrumbJsonLd } from '../lib/seo-config'
 
+const VALID_TOPICS = ['sales', 'demo', 'support', 'other']
+
 export default function Contact() {
-  const [form, setForm] = useState({ name: '', email: '', shop: '', phone: '', topic: 'sales', message: '' })
+  const [searchParams] = useSearchParams()
+  // Prefill topic from ?topic=demo (etc.) when the user lands here from a CTA
+  // like "Book a Demo". Any plan hint in ?plan=xxx is folded into the message.
+  const initialTopic = VALID_TOPICS.includes(searchParams.get('topic')) ? searchParams.get('topic') : 'sales'
+  const planHint = searchParams.get('plan')
+  const initialMessage = initialTopic === 'demo' && planHint
+    ? `I would like a demo of Fixora ERP (interested in the ${planHint} plan).`
+    : initialTopic === 'demo'
+      ? 'I would like to schedule a demo of Fixora ERP.'
+      : ''
+
+  const [form, setForm] = useState({
+    name: '', email: '', shop: '', phone: '',
+    topic: initialTopic,
+    message: initialMessage,
+  })
   const [busy, setBusy] = useState(false)
   const [sent, setSent] = useState('')
   const [err, setErr] = useState('')
@@ -33,8 +51,14 @@ export default function Contact() {
           { name: 'Contact', path: '/contact' },
         ])}
       />
-      <h1 className="text-4xl font-extrabold text-slate-900">Get in touch</h1>
-      <p className="mt-3 text-slate-600">Questions about plans, a demo, or support? Send a note and we'll respond within one business day.</p>
+      <h1 className="text-4xl font-extrabold text-slate-900">
+        {initialTopic === 'demo' ? 'Book a Fixora ERP demo' : 'Get in touch'}
+      </h1>
+      <p className="mt-3 text-slate-600">
+        {initialTopic === 'demo'
+          ? 'Tell us a bit about your shop and we will reach out to schedule a demo tailored to how you run things.'
+          : "Questions about plans, a demo, or support? Send a note and we'll respond within one business day."}
+      </p>
 
       {sent ? (
         <div className="mt-8 p-5 rounded-xl bg-emerald-50 border border-emerald-200 flex items-start gap-3">

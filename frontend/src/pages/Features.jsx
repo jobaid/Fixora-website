@@ -87,9 +87,9 @@ export default function Features() {
             without the bloat of enterprise suites.
           </p>
           <div className="mt-7 flex flex-wrap justify-center gap-3">
-            <a href={`${APP_ORIGIN}/signup`} className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-500 to-brand-700 text-white font-semibold shadow-lg hover:brightness-110">
-              Start free trial <ArrowRight size={16} />
-            </a>
+            <Link to="/contact?topic=demo" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-gradient-to-r from-brand-500 to-brand-700 text-white font-semibold shadow-lg hover:brightness-110">
+              Book a Demo <ArrowRight size={16} />
+            </Link>
             <Link to="/pricing" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-white text-slate-800 border border-slate-200 font-semibold hover:border-slate-300">
               See pricing
             </Link>
@@ -219,9 +219,9 @@ export default function Features() {
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900">Ready to see it in your shop?</h2>
           <p className="mt-3 text-slate-600 max-w-xl mx-auto">30-day free trial. No credit card. Setup takes under 5 minutes.</p>
           <div className="mt-7 flex justify-center gap-3 flex-wrap">
-            <a href={`${APP_ORIGIN}/signup`} className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-brand-500 to-brand-700 text-white font-semibold shadow-lg hover:brightness-110">
-              Start free trial <ArrowRight size={16} />
-            </a>
+            <Link to="/contact?topic=demo" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-brand-500 to-brand-700 text-white font-semibold shadow-lg hover:brightness-110">
+              Book a Demo <ArrowRight size={16} />
+            </Link>
             <Link to="/contact" className="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-white text-slate-800 border border-slate-200 font-semibold hover:border-slate-300">
               Book a demo
             </Link>

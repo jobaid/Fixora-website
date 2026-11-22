@@ -1,9 +1,7 @@
 import { useState } from 'react'
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom'
-import { Menu, X } from 'lucide-react'
+import { Menu, X, Calendar } from 'lucide-react'
 import Logo from './Logo'
-
-const SIGNIN_URL = import.meta.env.VITE_SIGNIN_URL || 'https://my.fixoraerp.com'
 
 const nav = [
   { to: '/features',   label: 'Features' },
@@ -63,7 +61,13 @@ export default function Navbar() {
           {nav.map((n) => <NavItem key={n.to} item={n} />)}
         </div>
         <div className="ml-auto hidden md:flex items-center gap-3">
-          <a href={SIGNIN_URL} className="text-sm text-slate-600 hover:text-slate-900 font-medium">Sign in</a>
+          <Link
+            to="/contact?topic=demo"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-gradient-to-r from-brand-500 to-brand-700 text-white font-semibold text-sm shadow-md hover:brightness-110 transition-all"
+          >
+            <Calendar size={14} aria-hidden="true" />
+            Book a Demo
+          </Link>
         </div>
         <button className="md:hidden ml-auto" onClick={() => setOpen((v) => !v)} aria-label="Menu">
           {open ? <X /> : <Menu />}
@@ -73,7 +77,14 @@ export default function Navbar() {
         <div className="md:hidden border-t border-slate-200 bg-white">
           <div className="max-w-7xl mx-auto px-4 py-3 flex flex-col gap-1">
             {nav.map((n) => <NavItem key={n.to} item={n} mobile onNavigate={close} />)}
-            <a href={SIGNIN_URL} className="px-3 py-2 rounded-md text-sm text-slate-700 hover:bg-slate-50">Sign in</a>
+            <Link
+              to="/contact?topic=demo"
+              onClick={close}
+              className="mt-2 inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-gradient-to-r from-brand-500 to-brand-700 text-white font-semibold text-sm shadow-md hover:brightness-110"
+            >
+              <Calendar size={14} aria-hidden="true" />
+              Book a Demo
+            </Link>
           </div>
         </div>
       )}

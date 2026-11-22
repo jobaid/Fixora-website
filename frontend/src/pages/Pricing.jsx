@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router-dom'
 import {
   Check, Loader2, ShieldCheck, Zap, CreditCard, HelpCircle, ArrowRight, Sparkles,
   Rocket, Gauge, Building2, Wrench, Star, Clock, Users, Phone,
@@ -241,14 +242,14 @@ export default function Pricing() {
                     )}
 
                     {/* CTA */}
-                    <a href={signupHref}
+                    <Link to={`/contact?topic=demo&plan=${p.key}`}
                       className={`mt-7 inline-flex items-center justify-center gap-2 w-full px-4 py-3.5 rounded-xl font-semibold text-sm transition-all
                         ${isTop
                           ? 'bg-white text-slate-900 hover:bg-slate-100 shadow-lg hover:shadow-xl'
                           : `bg-gradient-to-r ${theme.gradient} text-white shadow-md hover:shadow-lg hover:brightness-110`}`}>
-                      Start free trial
+                      Book a Demo
                       <ArrowRight size={16} className="group-hover:translate-x-0.5 transition-transform" />
-                    </a>
+                    </Link>
 
                     {/* Divider */}
                     <div className={`mt-7 pt-6 border-t ${isTop ? 'border-white/10' : 'border-slate-100'}`}>
